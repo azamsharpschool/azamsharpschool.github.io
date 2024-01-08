@@ -1858,6 +1858,10 @@ box-shadow: 1px 4px 8px -2px rgba(0,0,0,0.5);
     text-align: left;
 }
 
+.story_text span {
+    font-weight: bold;
+}
+
 
 /* -------------Newsletter-Section-Css-Start------------- */
 
