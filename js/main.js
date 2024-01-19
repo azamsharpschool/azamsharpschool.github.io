@@ -167,6 +167,7 @@ window.addEventListener('scroll', function() {
 
 // --------Magnify-popup
 
+/*
 $(function() {
     $('.popup-youtube').magnificPopup({
         disableOn: 700,
@@ -176,7 +177,7 @@ $(function() {
         preloader: false,
         fixedContentPos: false
     });
-});
+}); */
 
 
 // Pricing Section Year Month Jquery
@@ -228,7 +229,7 @@ window.addEventListener('scroll', function() {
 	var position = element.getBoundingClientRect();
 
 	if(position.top < window.innerHeight && position.bottom >= 0) {
-    $('.purple_backdrop').css("opacity", "1");
+    //$('.purple_backdrop').css("opacity", "1");
 	}else{
     //console.log('Element is not visible');
     $('.purple_backdrop').css("opacity", "0");
@@ -239,11 +240,11 @@ $(window).on('resize', function() {
   if ($(window).width()<768) {
       
     window.addEventListener('scroll', function() {
-      var element = document.querySelector('.mobile_mockup');
+      var element = document.querySelector('.free_text');
       var position = element.getBoundingClientRect();
     
       if(position.top < window.innerHeight && position.bottom >= 0) {
-        $('.purple_backdrop').css("opacity", "1");
+        //$('.purple_backdrop').css("opacity", "1");
       }else{
         //console.log('Element is not visible');
         $('.purple_backdrop').css("opacity", "0");
