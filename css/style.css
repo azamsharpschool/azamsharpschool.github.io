@@ -3496,5 +3496,12 @@ footer .top_footer .anim_line span:nth-child(2) {
 .map_section {
     margin: 50px 0;
 }
+
+.strike-price {
+    text-decoration: line-through;
+    font-weight: normal;
+    margin-left: 10px;
+    font-size: small;
+}
  
  
