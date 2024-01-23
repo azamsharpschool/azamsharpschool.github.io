@@ -259,7 +259,7 @@ $(window).on('resize', function() {
       var position = element.getBoundingClientRect();
     
       if(position.top < window.innerHeight && position.bottom >= 0) {
-        $('.purple_backdrop').css("opacity", "1");
+        //$('.purple_backdrop').css("opacity", "1");
       }else{
         //console.log('Element is not visible');
         $('.purple_backdrop').css("opacity", "0");
