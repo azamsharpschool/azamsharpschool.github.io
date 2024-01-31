@@ -1184,7 +1184,7 @@ iframe#youtubevideo {
 }
 
 .modern_ui_section .ui_images::before {
-    content: "";
+    /*content: ""; */
     position: absolute;
     left: 50%;
     top: 50%;
