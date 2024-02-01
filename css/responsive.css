@@ -425,3 +425,9 @@
     /* about app section */
     .about_app_section .about_img::before {left: 49%;}
 }
+
+@media screen and (max-width: 1000px) {
+    .left_img {
+        display: none; 
+    }
+}
