@@ -7,11 +7,11 @@ const recentSales = [
     "Patrick purchased RealityKit Fundamentals - A Guide for Building AR Applications on March 13th", 
     "Joshua purchased Pro Membership on March 13th", 
     "Arjun purchased SwiftData Fundamentals Workshop on March 9th", 
-    "Jeffery purchased Pro Membership on March 9th", 
+    "Ned purchased SwiftData Fundamentals Workshop on March 26th", 
     "Marek purchased Pro Membership on March 8th", 
     "Zachary purchased Introduction to Testing in iOS Using Swift Workshop on March 3rd", 
     "Edwin purchased Pro Membership on March 2nd", 
-    "Alexdander purchased Core Data in iOS Bootcamp on Feb 28", 
+    "Scott purchased Pro Membership on March 26", 
     "Muhammad purchased Introduction to Server Side Swift Using Vapor Workshop on March 22nd", 
 ]
 
