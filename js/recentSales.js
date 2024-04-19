@@ -9,7 +9,7 @@ const recentSales = [
     "Ned purchased SwiftData Fundamentals Workshop on March 26th", 
     "Marek purchased Pro Membership on March 8th", 
     "Zachary purchased Introduction to Testing in iOS Using Swift Workshop on March 3rd", 
-    "Edwin purchased Pro Membership on March 2nd", 
+    "Clemens purchased Introduction to Testing i iOS Using Swift Workshop on April 19", 
     "Mario purchased Pro Membership on April 7", 
     "Kenneth purchased SwiftData Fundamentals Workshop on April 5", 
 ]
