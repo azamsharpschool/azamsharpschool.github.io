@@ -3,15 +3,15 @@
 const recentSales = [
     "Markus purchased SwiftData Bootcamp on April 8",
     "Rudy purchased Pro Membership on April 8", 
-    "Rafael purchased Swift & Vapor Bootcamp on April 8", 
-    "Joshua purchased Pro Membership on March 13th", 
-    "Arjun purchased SwiftData Fundamentals Workshop on March 9th", 
-    "Ned purchased SwiftData Fundamentals Workshop on March 26th", 
-    "Marek purchased Pro Membership on March 8th", 
-    "Zachary purchased Introduction to Testing in iOS Using Swift Workshop on March 3rd", 
-    "Clemens purchased Introduction to Testing i iOS Using Swift Workshop on April 19", 
-    "Mario purchased Pro Membership on April 7", 
-    "Kenneth purchased SwiftData Fundamentals Workshop on April 5", 
+    "Julian purchased SwiftUI Architecture on May 8", 
+    "Nawaf purchased Pro Membership on May 8", 
+    "Slawomira purchased Pro Membership on May 9", 
+    "Jeffery purchased Pro Membership on May 9", 
+    "Shilan purchased SwiftUI Architecture on May 9", 
+    "Brian purchased SwiftUI Architecture on May 9", 
+    "William purchased SwiftUI Architecture on May 9", 
+    "Stuart purchased SwiftUI Architecture on May 9", 
+    "Florin purchased Pro Membership on May 9", 
 ]
 
 function getRecentSales() {
