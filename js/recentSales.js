@@ -1,17 +1,13 @@
 // This is the history of actual sales from AzamSharp School. 
 // This is not live data and the sales happened in the past. 
 const recentSales = [
-    "Markus purchased SwiftData Bootcamp on April 8",
-    "Rudy purchased Pro Membership on April 8", 
-    "Julian purchased SwiftUI Architecture on May 8", 
-    "Nawaf purchased Pro Membership on May 8", 
-    "Slawomira purchased Pro Membership on May 9", 
-    "Jeffery purchased Pro Membership on May 9", 
-    "Shilan purchased SwiftUI Architecture on May 9", 
-    "Brian purchased SwiftUI Architecture on May 9", 
-    "William purchased SwiftUI Architecture on May 9", 
-    "Stuart purchased SwiftUI Architecture on May 9", 
-    "Florin purchased Pro Membership on May 9", 
+    "Patrick purchased Pro Membership on June 1", 
+    "Muhamad purchased Pro Membership on June 2", 
+    "Taif purchased Pro Membership on June 3", 
+    "Rudy purchased Pro Membership on June 4", 
+    "Brian purchased Pro Membership on June 6", 
+    "Jevgeni purchased SwiftUI Architecture on June 6", 
+    "Peter purchased Pro Membership on June 7"
 ]
 
 function getRecentSales() {
