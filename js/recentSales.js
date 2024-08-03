@@ -2,12 +2,12 @@
 // This is not live data and the sales happened in the past. 
 const recentSales = [
     "Patrick purchased Pro Membership on June 1", 
-    "Muhamad purchased Pro Membership on June 2", 
+    "Muhamad purchased Pro Membership on August 2", 
     "Taif purchased Pro Membership on June 3", 
-    "Rudy purchased Pro Membership on June 4", 
-    "Brian purchased Pro Membership on June 6", 
-    "Jevgeni purchased SwiftUI Architecture on June 6", 
-    "Peter purchased Pro Membership on June 7"
+    "Richard purchased Pro Membership on July 31", 
+    "Fanny purchased SwiftUI Architecture on July 30", 
+    "David purchased Supabase for iOS Developers on July 31", 
+    "Stewart purchased Supabase for iOS Developers on August 2"
 ]
 
 function getRecentSales() {
