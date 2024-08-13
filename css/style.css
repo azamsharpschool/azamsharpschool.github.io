@@ -3532,3 +3532,15 @@ s.straight::before, strike.straight::before{transform: rotate(0deg);left:-1%;wid
     font-weight: bold;
     font-size: 12px;
 }
+
+.standout-text {
+    color: #ffffff;              /* White text color */
+    background-color: #FF5733;   /* Bright orange background */
+    font-size: 1em;            /* Larger font size */
+    font-weight: bold;           /* Extra bold font weight */
+    padding: 5px; 
+    border-radius: 2px;          /* Rounded corners */
+    
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3); /* Add a shadow */
+    display: inline-block;       /* Keep it within the content flow */
+}
