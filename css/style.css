@@ -3544,3 +3544,6 @@ s.straight::before, strike.straight::before{transform: rotate(0deg);left:-1%;wid
     box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3); /* Add a shadow */
     display: inline-block;       /* Keep it within the content flow */
 }
+
+
+
