@@ -47,7 +47,7 @@
         z-index: 9999; 
     }
 
-/* Full-width banner with mobile-friendly flex layout */
+/* Full-width banner with compact spacing */
 #banner {
     position: fixed;
     bottom: 0;
@@ -56,7 +56,7 @@
     background: linear-gradient(135deg, #0078D4, #0056A4);
     color: white;
     text-align: center;
-    padding: 12px 15px;
+    padding: 10px 12px;
     font-size: 16px;
     font-weight: bold;
     opacity: 1;
@@ -64,76 +64,77 @@
     z-index: 1000;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
-    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px; /* Reduced gap for tighter layout */
 }
 
-/* Mobile-friendly title */
+/* Title with compact spacing */
 #title {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
     color: #ffffff;
     text-align: center;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px; /* Reduce letter spacing for a tighter look */
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 2px; /* Reduce margin between title and other text */
 }
 
-/* Highlighted price */
+/* Highlighted price with reduced spacing */
 #price {
-    font-size: 20px;
-    color: #32CD32; /* Bright Green */
+    font-size: 18px;
+    color: #32CD32;
     font-weight: bold;
-    background: #0b6623; /* Dark Green Background */
-    padding: 5px 12px;
+    background: #0b6623;
+    padding: 4px 10px;
     border-radius: 5px;
     display: inline-block;
-    margin: 10px 0;
+    margin: 5px 0; /* Reduce margin for tighter spacing */
 }
 
-/* Stylish button */
+/* Compact button */
 .reserve-btn {
-    padding: 10px 18px;
-    font-size: 16px; /* Slightly smaller for mobile */
+    padding: 6px 14px; /* Smaller padding */
+    font-size: 14px; /* Reduce font size slightly */
     font-weight: bold;
     color: white;
     background: #28A745;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
     text-decoration: none;
     transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Hover effect for desktop users */
 .reserve-btn:hover {
     background: #218838;
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
-/* Mobile-friendly adjustments using media queries */
+/* Mobile-friendly adjustments */
 @media (max-width: 768px) {
     #banner {
-        flex-direction: column; /* Stack elements vertically on smaller screens */
-        padding: 15px; /* Increase padding for better spacing */
+        flex-direction: column;
+        padding: 12px; /* Compact padding */
     }
 
     #title {
-        font-size: 22px; /* Slightly smaller for mobile readability */
+        font-size: 20px; /* Slightly smaller for mobile */
     }
 
     #price {
-        font-size: 18px; /* Reduce size for mobile screens */
+        font-size: 16px;
+        margin: 3px 0; /* Reduce spacing further */
     }
 
     .reserve-btn {
-        padding: 8px 15px; /* Reduce padding on smaller screens */
-        font-size: 14px;
+        padding: 5px 12px; /* Make button more compact */
+        font-size: 13px;
     }
 }
+
 
 
         
@@ -1475,7 +1476,7 @@
   <script>
     setTimeout(() => {
         document.getElementById("banner").style.opacity = "0";
-    }, 20000); // Display for 5 seconds before fading out
+    }, 10000); // Display for 5 seconds before fading out
 </script>
 
   <!-- Start Toast  
