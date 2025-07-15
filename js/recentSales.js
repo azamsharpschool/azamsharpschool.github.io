@@ -1,11 +1,12 @@
 // This is the history of actual sales from AzamSharp School. 
 // This is not live data and the sales happened in the past. 
 const recentSales = [
-    "Ociel purchased Supabase for iOS Developers.", 
+    "Sumit Oberoi purchased Annual Pro Membership.", 
     "Ned purchased Supabase for iOS Developers Workshop.", 
     "Alberto Diaz purchased Annual Pro Membership.", 
-    "Smitty purchased Swift Language Fundamentals.", 
-    "Allan Evans purchased Pro Membership"
+    "Allan Evans purchased Pro Membership", 
+    "Roman Smirnov purchased Pro Membership", 
+    "Isik Ozturkeri purchased Getting Started with Foundation Models Framework."
 ]
 
 function getRecentSales() {
