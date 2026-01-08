@@ -1,0 +1,589 @@
+<!-- SwiftUI Architecture — Minimal Sale Page (cover-matching abstract style)
+     Drop-in HTML + CSS
+     Uses your provided cover image URL:
+       /images/swiftui-architecture-book-cover.png
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SwiftUI Architecture — Patterns and Practices for Building Scalable Applications</title>
+
+  <style>
+    :root{
+      --ink: #1f2a44;          /* deep navy */
+      --ink2:#2b3a5a;
+      --muted: rgba(31,42,68,0.72);
+      --muted2: rgba(31,42,68,0.55);
+      --paper:#ffffff;
+      --mist:#eaf3fb;          /* soft background like the cover */
+      --line: rgba(31,42,68,0.14);
+      --soft: rgba(31,42,68,0.08);
+      --accentA: #8fd6ff;
+      --accentB: #8aa8ff;
+
+      /* calming green for CTA */
+      --ctaA: rgba(150, 227, 190, 0.96);
+      --ctaB: rgba(120, 210, 170, 0.92);
+      --ctaBorder: rgba(40, 120, 90, 0.26);
+      --ctaInk: #0b2a1f;
+
+      --radius: 18px;
+      --radius2: 22px;
+      --max: 980px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--mist);
+      overflow-x:hidden;
+    }
+
+    /* subtle paper grain */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:0.25;
+      background-image: radial-gradient(rgba(31,42,68,0.055) 1px, transparent 1px);
+      background-size: 14px 14px;
+      mix-blend-mode: multiply;
+    }
+
+    .wrap{
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* cover-inspired abstract waves */
+    .waves{
+      position:absolute;
+      left:50%;
+      transform: translateX(-50%);
+      top: 220px;
+      width: min(1100px, 120vw);
+      height: 540px;
+      pointer-events:none;
+      opacity: 0.92;
+      filter: saturate(1.06);
+    }
+
+    header{ padding: 22px 0 10px; }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 18px;
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
+    }
+    .brand strong{
+      font-size: 14px;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+      color: var(--ink2);
+    }
+    .brand span{
+      font-size: 12px;
+      color: var(--muted2);
+      margin-top: 6px;
+    }
+
+    .navlinks{
+      display:flex;
+      gap: 8px;
+      align-items:center;
+    }
+    .nav a{
+      color: var(--muted);
+      font-size: 13px;
+      text-decoration:none;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: 160ms ease;
+    }
+    .nav a:hover{
+      border-color: var(--soft);
+      background: rgba(255,255,255,0.6);
+    }
+
+    /* hero */
+    .hero{
+      padding: 30px 0 22px;
+      position:relative;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.06fr 0.94fr;
+      gap: 26px;
+      align-items:center;
+    }
+
+    .kicker{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      margin-bottom: 12px;
+      color: var(--muted2);
+      font-size: 12px;
+      letter-spacing: 0.35px;
+      text-transform: uppercase;
+    }
+    .kicker i{
+      width: 56px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(143,214,255,0.95), transparent);
+      display:inline-block;
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(34px, 4.6vw, 56px);
+      letter-spacing: -1px;
+      line-height:1.02;
+    }
+
+    .sub{
+      margin:0;
+      color: var(--muted);
+      line-height:1.65;
+      max-width: 60ch;
+      font-size: 15.5px;
+    }
+
+    /* CTA area: keep it under the copy and aligned left (best spot) */
+    .cta-wrap{
+      margin-top: 18px;
+      display:flex;
+      justify-content:flex-start;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+      align-items:center;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.72);
+      color: var(--ink);
+      font-weight: 650;
+      font-size: 13px;
+      letter-spacing: 0.2px;
+      cursor:pointer;
+      transition: 160ms ease;
+      text-decoration:none;
+      user-select:none;
+    }
+    .btn:hover{ transform: translateY(-1px); }
+
+    /* Buy button more visible + calming green */
+    .btn.buy{
+      padding: 16px 28px;
+      font-size: 15px;
+      font-weight: 750;
+      letter-spacing: 0.35px;
+      color: var(--ctaInk);
+      background: linear-gradient(135deg, var(--ctaA), var(--ctaB));
+      border: 1px solid var(--ctaBorder);
+      box-shadow: 0 20px 44px rgba(40, 120, 90, 0.18), inset 0 1px 0 rgba(255,255,255,0.62);
+    }
+    .btn.buy:hover{
+      box-shadow: 0 24px 54px rgba(40, 120, 90, 0.22), inset 0 1px 0 rgba(255,255,255,0.70);
+    }
+
+    /* cover card */
+    .cover-card{
+      border-radius: var(--radius2);
+      padding: 14px;
+    }
+    .cover{
+      width:100%;
+      aspect-ratio: 5/8;
+      border-radius: 16px;
+      overflow:hidden;
+    }
+    .cover img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+
+    /* sections */
+    .section{
+      padding: 26px 0 10px;
+      position:relative;
+    }
+    .section h2{
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: -0.3px;
+    }
+    .section p{
+      margin:0;
+      color: var(--muted);
+      line-height:1.7;
+      font-size: 14px;
+      max-width: 86ch;
+    }
+
+    /* minimal chapter list */
+    .chapters{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .chapter{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--soft);
+      background: rgba(255,255,255,0.64);
+    }
+    .chapter strong{
+      font-size: 13.5px;
+      letter-spacing: -0.1px;
+      color: var(--ink2);
+    }
+    .chapter span{
+      font-size: 12.5px;
+      color: var(--muted2);
+      white-space:nowrap;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--soft);
+      background: rgba(255,255,255,0.7);
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .tag.available{
+      border-color: rgba(31,42,68,0.12);
+      background: linear-gradient(135deg, rgba(143,214,255,0.42), rgba(138,168,255,0.30));
+      color: rgba(14,26,51,0.92);
+      font-weight: 650;
+    }
+
+    /* small two-column bullets */
+    .bullets{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .b{
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--soft);
+      background: rgba(255,255,255,0.62);
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.5;
+    }
+
+    footer{
+      padding: 28px 0 40px;
+      color: var(--muted2);
+      font-size: 12px;
+    }
+    footer .foot{
+      display:flex;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap:wrap;
+      border-top: 1px solid var(--soft);
+      padding-top: 16px;
+    }
+
+    @media (max-width: 900px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .waves{ top: 320px; height: 560px; opacity: 0.86; }
+      .bullets{ grid-template-columns: 1fr; }
+      .chapter{ align-items:flex-start; }
+      .chapter span{ white-space:normal; }
+      .cta-wrap{ justify-content:center; } /* center CTA on mobile */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- abstract art (inline SVG) -->
+  <svg class="waves" viewBox="0 0 1200 540" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0" stop-color="#9ae3ff" stop-opacity="0.92"/>
+        <stop offset="0.55" stop-color="#6fb9ff" stop-opacity="0.55"/>
+        <stop offset="1" stop-color="#9dd9ff" stop-opacity="0.22"/>
+      </linearGradient>
+      <linearGradient id="g2" x1="0" x2="1" y1="1" y2="0">
+        <stop offset="0" stop-color="#a6f1e5" stop-opacity="0.62"/>
+        <stop offset="0.55" stop-color="#7ad7ff" stop-opacity="0.34"/>
+        <stop offset="1" stop-color="#f3c6a6" stop-opacity="0.20"/>
+      </linearGradient>
+      <linearGradient id="g3" x1="0" x2="1" y1="0" y2="0">
+        <stop offset="0" stop-color="#7ad7ff" stop-opacity="0.38"/>
+        <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.18"/>
+        <stop offset="1" stop-color="#7aa7ff" stop-opacity="0.32"/>
+      </linearGradient>
+      <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="1.2"/>
+      </filter>
+    </defs>
+
+    <path filter="url(#blur)" d="M0,360 C230,275 400,305 560,345 C740,392 860,428 1200,345 L1200,540 L0,540 Z"
+          fill="url(#g1)" opacity="0.86"/>
+    <path filter="url(#blur)" d="M0,408 C220,325 420,338 600,388 C760,434 900,470 1200,398 L1200,540 L0,540 Z"
+          fill="url(#g2)" opacity="0.82"/>
+    <path filter="url(#blur)" d="M0,440 C260,368 450,382 620,426 C780,466 920,506 1200,446 L1200,540 L0,540 Z"
+          fill="url(#g3)" opacity="0.66"/>
+
+    <path d="M85,440 C335,338 520,390 705,418 C862,442 982,458 1125,428"
+          fill="none" stroke="rgba(31,42,68,0.12)" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+
+  <div class="wrap">
+    <header>
+      <div class="nav">
+        <div class="brand">
+          <strong>SwiftUI Architecture</strong>
+          <span>Patterns and Practices for Building Scalable Applications</span>
+        </div>
+
+        <div class="navlinks">
+          <a href="#chapters">Chapters</a>
+          <a href="#details">Details</a>
+          <a href="#buy">Buy</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="hero" id="buy">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker"><i></i> ebook <i></i></div>
+
+          <h1>Stop Fighting SwiftUI. Start Building Apps.</h1>
+
+         <p class="sub">
+  Designed to help SwiftUI developers simplify their architecture, understand common patterns, and choose approaches that work with SwiftUI instead of against it.
+</p>
+
+          <!-- CTA under the copy, aligned left (centers on mobile) -->
+          <div class="cta-wrap">
+            <div class="actions">
+              <a href="https://azamsharp.teachable.com/purchase?product_id=6594281" target="_blank" rel="noreferrer" class="btn buy" style = "color:white; ">
+                Buy Now — $39
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <aside class="cover-card" aria-label="Book cover">
+          <div class="cover">
+            <img src="/images/swiftui-architecture-book-cover.png" alt="SwiftUI Architecture book cover" />
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <section class="section" id="chapters">
+      <h2>Chapters</h2>
+      <p>Here’s the current table of contents.</p>
+
+      <div class="chapters" aria-label="Chapter list">
+        <div class="chapter">
+          <strong>Introduction</strong>
+          <span class="tag available">Available</span>
+        </div>
+
+        <div class="chapter">
+          <strong>MVVM and the Cost of Carrying Old Patterns Forward</strong>
+          <span class="tag available">Available</span>
+        </div>
+
+        <div class="chapter">
+          <strong>Container/Presenter Pattern</strong>
+          <span class="tag available">Available</span>
+        </div>
+
+        <div class="chapter">
+          <strong>MV Pattern</strong>
+          <span class="tag available">Available</span>
+        </div>
+
+        <div class="chapter">
+          <strong>Communication Patterns in Observable Stores</strong>
+          <span class="tag">Coming soon</span>
+        </div>
+
+        <div class="chapter">
+          <strong>Deep Dive Into Environment</strong>
+          <span class="tag">Coming soon</span>
+        </div>
+
+        <div class="chapter">
+          <strong>SwiftData Architecture</strong>
+          <span class="tag">Coming soon</span>
+        </div>
+
+        <div class="chapter">
+          <strong>Global Sheets and Toasts</strong>
+          <span class="tag">Coming soon</span>
+        </div>
+
+        <div class="chapter">
+          <strong>Validation</strong>
+          <span class="tag">Coming soon</span>
+        </div>
+
+        <div class="chapter">
+          <strong>Navigation</strong>
+          <span class="tag">Coming soon</span>
+        </div>
+
+        <div class="chapter">
+          <strong>UIKit to SwiftUI</strong>
+          <span class="tag">Coming soon</span>
+        </div>
+
+        <div class="chapter">
+          <strong>Composing and Customizing Views</strong>
+          <span class="tag">Coming soon</span>
+        </div>
+
+        <div class="chapter">
+          <strong>Testing</strong>
+          <span class="tag">Coming soon</span>
+        </div>
+
+        <div class="chapter">
+          <strong>Performance and Debugging</strong>
+          <span class="tag">Coming soon</span>
+        </div>
+
+        <div class="chapter">
+          <strong>Firebase and Supabase</strong>
+          <span class="tag">Coming soon</span>
+        </div>
+
+        <div class="chapter">
+          <strong>Conclusion</strong>
+          <span class="tag">Coming soon</span>
+        </div>
+      </div>
+    </section>
+
+   <section class="section" id="audience">
+  <h2>Who this book is for</h2>
+
+  <p>
+    This book is for SwiftUI developers who want more than just patterns.
+    It’s for developers who want to understand how SwiftUI actually works and
+    how to use that understanding to build apps that scale without becoming fragile.
+  </p>
+
+  <div class="bullets">
+    <div class="b">
+      Developers who want a clear mental model for SwiftUI architecture, state, and data flow
+    </div>
+    <div class="b">
+      iOS developers who want practical guidance on navigation, validation, testing, and global UI patterns
+    </div>
+    <div class="b">
+      Teams building real-world apps with networking, persistence, and shared state
+    </div>
+    <div class="b">
+      Developers who want to stop over-architecting and start making confident design decisions
+    </div>
+    <div class="b">
+      Anyone who wants to understand SwiftUI’s Environment, stores, and view composition deeply
+    </div>
+  </div>
+<br>
+  <p class="note">
+    You’ll learn how to structure apps, communicate between views and stores,
+    design navigation flows, test behavior, debug performance issues,
+    and evolve your architecture as your app grows.
+  </p>
+  <br>
+  <p class="note">
+    Whether you’re maintaining an existing SwiftUI codebase or starting something new,
+    this book helps you choose the right level of structure without fighting the framework.
+  </p>
+</section>
+
+
+<section class="section" id="details">
+  <h2>What you’ll get</h2>
+
+  <p>
+   A practical, experience-driven guide to structuring SwiftUI apps the way they are meant to be built. Rather than carrying old architectural patterns forward, this book shows you how to lean into SwiftUI’s design so your apps stay clear, flexible, and easy to maintain as they grow.
+  </p>
+  <br>
+
+  <p style="margin-top: 10px;">
+    The book is available in <strong>PDF</strong> and <strong>ePub</strong> formats.
+    Your purchase includes <strong>all future updates</strong>, so as SwiftUI
+    evolves, this book evolves with it.
+  </p>
+</section>
+
+
+   <div class="cta-wrap">
+            <div class="actions">
+              <a href="https://azamsharp.teachable.com/purchase?product_id=6594281" target="_blank" rel="noreferrer" class="btn buy" style = "color: white; ">
+                Buy Now — $39
+              </a>
+            </div>
+          </div>
+
+
+    <footer>
+      <div class="foot">
+        <div>© <span id="y"></span> Mohammad Azam</div>
+        <div>
+          <a href="https://azamsharp.school" target="_blank" rel="noreferrer" style="color:var(--ink2); text-decoration:none;">
+            azamsharp.school
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
