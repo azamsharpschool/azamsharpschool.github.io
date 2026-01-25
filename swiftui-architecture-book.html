@@ -12,6 +12,57 @@
   <title>SwiftUI Architecture — Patterns and Practices for Building Scalable Applications</title>
 
   <style>
+
+    /* testimonial */
+.testimonial{
+  margin-top: 14px;
+  padding: 18px 20px;
+  border-radius: var(--radius2);
+  border: 1px solid var(--soft);
+  background: rgba(255,255,255,0.68);
+}
+
+.testimonial-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.testimonial-stars{
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: rgba(31,42,68,0.9);
+}
+
+.testimonial-name{
+  font-size: 13px;
+  font-weight: 750;
+  color: var(--ink2);
+}
+
+.testimonial-body{
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.testimonial-body p{
+  margin: 0 0 10px;
+}
+
+.testimonial-body p:last-child{
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px){
+  .testimonial{
+    padding: 16px;
+  }
+}
+
+
     :root{
       --ink: #1f2a44;          /* deep navy */
       --ink2:#2b3a5a;
@@ -557,6 +608,40 @@
     this book helps you choose the right level of structure without fighting the framework.
   </p>
 </section>
+
+<section class="section" id="testimonial">
+  <h2>What people are saying</h2>
+
+  <div class="testimonial">
+    <div class="testimonial-header">
+      <div class="testimonial-stars" aria-label="5 out of 5 stars">
+        ★★★★★
+      </div>
+      <div class="testimonial-name">Daniel Ruiz</div>
+    </div>
+
+    <div class="testimonial-body">
+      <p>
+        I’ve read a lot of SwiftUI content over the years, but this book finally made
+        architecture click for me. Instead of pushing heavy patterns or theory, it focuses
+        on how SwiftUI actually wants you to think. The examples feel real, the explanations
+        are clear, and I constantly found myself saying “oh… that makes sense now.”
+      </p>
+      <br>
+      <p>
+        What I appreciated most is that it doesn’t overcomplicate things. It shows when
+        structure helps and when it just adds noise. I’ve already refactored parts of my app
+        using ideas from this book, and the code is cleaner and easier to reason about.
+      </p>
+      <br>
+      <p>
+        If you’re building real SwiftUI apps and feeling stuck between “too simple” and
+        “overengineered,” this book hits the sweet spot.
+      </p>
+    </div>
+  </div>
+</section>
+
 
 
 <section class="section" id="details">
