@@ -194,10 +194,106 @@
   font-weight: 600;
 }
 
+.wwdc-sale-banner {
+  margin: 24px;
+  padding: 36px 64px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 122, 89, 0.35), transparent 35%),
+    radial-gradient(circle at top right, rgba(90, 120, 255, 0.4), transparent 35%),
+    linear-gradient(135deg, #0b1020, #111827 55%, #1e1b4b);
+  color: white;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.wwdc-sale-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+
+.wwdc-label {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fbbf24;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.wwdc-sale-banner h2 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.wwdc-copy {
+  max-width: 620px;
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.wwdc-sale-action {
+  min-width: 260px;
+  padding: 22px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  text-align: center;
+  backdrop-filter: blur(14px);
+}
+
+.coupon-label {
+  display: block;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.coupon-code {
+  display: block;
+  padding: 12px 18px;
+  border-radius: 14px;
+  background: white;
+  color: #111827;
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.wwdc-sale-action p {
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 760px) {
+  .wwdc-sale-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .wwdc-sale-action {
+    width: 100%;
+  }
+}
         
 </style>
 
 <!-- End Notifications -->
+
+
 
 
 </head>
@@ -229,6 +325,24 @@
   
   <!-- Page-wrapper-Start -->
   <div class="page_wrapper">
+
+<section class="wwdc-sale-banner">
+  <div class="wwdc-sale-content">
+    <div>
+      <p class="wwdc-label">WWDC 2026 Sale</p>
+      <h2>30% Off Everything at AzamSharp School</h2>
+      <p class="wwdc-copy">
+        Level up your SwiftUI, SwiftData, AI, and server-side Swift skills during WWDC week.
+      </p>
+    </div>
+
+    <div class="wwdc-sale-action">
+      <span class="coupon-label">Use Code</span>
+      <span class="coupon-code">WWDC2026</span>
+      <p>Offer ends June 15, 2026</p>
+    </div>
+  </div>
+</section>
 
 
     <!-- Preloader -->
