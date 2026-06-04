@@ -1,0 +1,668 @@
+
+<!-- SwiftData Architecture — Minimal Sale Page
+     Drop-in HTML + CSS
+     Color scheme: Blue → Indigo → Violet
+     Suggested cover image path:
+       /images/swiftdata-architecture-book-cover.png
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SwiftData Architecture — Building Real-World Data-Driven Applications</title>
+
+  <style>
+    :root{
+      --ink: #171f34;
+      --ink2:#263453;
+      --muted: rgba(23,31,52,0.72);
+      --muted2: rgba(23,31,52,0.55);
+      --paper:#ffffff;
+      --mist:#f4f6fb;
+      --line: rgba(23,31,52,0.14);
+      --soft: rgba(23,31,52,0.08);
+
+      /* SwiftData inspired blue/indigo/violet */
+      --accentA: #7c9cff;
+      --accentB: #9d7cff;
+      --accentC: #8fd6ff;
+
+      --ctaA: #6d8cff;
+      --ctaB: #8a6dff;
+      --ctaBorder: rgba(70, 87, 190, 0.28);
+      --ctaInk: #ffffff;
+
+      --radius: 18px;
+      --radius2: 22px;
+      --max: 980px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
+    body{
+      margin:0;
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--mist);
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:0.23;
+      background-image: radial-gradient(rgba(23,31,52,0.06) 1px, transparent 1px);
+      background-size: 14px 14px;
+      mix-blend-mode: multiply;
+    }
+
+    .wrap{
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .waves{
+      position:absolute;
+      left:50%;
+      transform: translateX(-50%);
+      top: 230px;
+      width: min(1100px, 120vw);
+      height: 540px;
+      pointer-events:none;
+      opacity: 0.92;
+      filter: saturate(1.08);
+    }
+
+    header{ padding: 22px 0 10px; }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 18px;
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
+    }
+
+    .brand strong{
+      font-size: 14px;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+      color: var(--ink2);
+    }
+
+    .brand span{
+      font-size: 12px;
+      color: var(--muted2);
+      margin-top: 6px;
+    }
+
+    .navlinks{
+      display:flex;
+      gap: 8px;
+      align-items:center;
+    }
+
+    .nav a{
+      color: var(--muted);
+      font-size: 13px;
+      text-decoration:none;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: 160ms ease;
+    }
+
+    .nav a:hover{
+      border-color: var(--soft);
+      background: rgba(255,255,255,0.64);
+    }
+
+    .hero{
+      padding: 30px 0 22px;
+      position:relative;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.06fr 0.94fr;
+      gap: 26px;
+      align-items:center;
+    }
+
+    .kicker{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      margin-bottom: 12px;
+      color: var(--muted2);
+      font-size: 12px;
+      letter-spacing: 0.35px;
+      text-transform: uppercase;
+    }
+
+    .kicker i{
+      width: 56px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(124,156,255,0.95), transparent);
+      display:inline-block;
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(34px, 4.6vw, 56px);
+      letter-spacing: -1px;
+      line-height:1.02;
+    }
+
+    .sub{
+      margin:0;
+      color: var(--muted);
+      line-height:1.65;
+      max-width: 60ch;
+      font-size: 15.5px;
+    }
+
+    .cta-wrap{
+      margin-top: 18px;
+      display:flex;
+      justify-content:flex-start;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+      align-items:center;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.76);
+      color: var(--ink);
+      font-weight: 650;
+      font-size: 13px;
+      letter-spacing: 0.2px;
+      cursor:pointer;
+      transition: 160ms ease;
+      text-decoration:none;
+      user-select:none;
+    }
+
+    .btn:hover{ transform: translateY(-1px); }
+
+    .btn.buy{
+      padding: 16px 28px;
+      font-size: 15px;
+      font-weight: 760;
+      letter-spacing: 0.35px;
+      color: var(--ctaInk);
+      background: linear-gradient(135deg, var(--ctaA), var(--ctaB));
+      border: 1px solid var(--ctaBorder);
+      box-shadow: 0 20px 44px rgba(82, 96, 210, 0.22), inset 0 1px 0 rgba(255,255,255,0.42);
+    }
+
+    .btn.buy:hover{
+      box-shadow: 0 24px 54px rgba(82, 96, 210, 0.28), inset 0 1px 0 rgba(255,255,255,0.52);
+    }
+
+    .cta-note{
+      width:100%;
+      margin: 2px 0 0;
+      color: var(--muted2);
+      font-size: 13px;
+    }
+
+    .cta-note a{
+      color: var(--ink2);
+      font-weight: 700;
+      text-decoration:none;
+    }
+
+    .cover-card{
+      border-radius: var(--radius2);
+      padding: 14px;
+    }
+
+    .cover{
+      width:100%;
+      aspect-ratio: 5/8;
+      border-radius: 16px;
+      overflow:hidden;
+      background: linear-gradient(145deg, rgba(255,255,255,0.74), rgba(255,255,255,0.28));
+      border: 1px solid rgba(23,31,52,0.10);
+      box-shadow: 0 26px 80px rgba(23,31,52,0.14);
+    }
+
+    .cover img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+
+    .cover-fallback{
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      padding: 34px 28px;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(143,214,255,0.72), transparent 30%),
+        radial-gradient(circle at 82% 72%, rgba(157,124,255,0.66), transparent 36%),
+        linear-gradient(145deg, #ffffff, #e8ecff);
+    }
+
+    .cover-fallback small{
+      color: var(--muted2);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 800;
+    }
+
+    .cover-fallback strong{
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 0.96;
+      letter-spacing: -1.5px;
+      color: var(--ink);
+    }
+
+    .cover-fallback span{
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .section{
+      padding: 26px 0 10px;
+      position:relative;
+    }
+
+    .section h2{
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: -0.3px;
+    }
+
+    .section p{
+      margin:0;
+      color: var(--muted);
+      line-height:1.7;
+      font-size: 14px;
+      max-width: 86ch;
+    }
+
+    .chapters{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .chapter{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--soft);
+      background: rgba(255,255,255,0.66);
+    }
+
+    .chapter strong{
+      font-size: 13.5px;
+      letter-spacing: -0.1px;
+      color: var(--ink2);
+    }
+
+    .chapter span{
+      font-size: 12.5px;
+      color: var(--muted2);
+      white-space:nowrap;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--soft);
+      background: rgba(255,255,255,0.72);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .tag.available{
+      border-color: rgba(23,31,52,0.12);
+      background: linear-gradient(135deg, rgba(124,156,255,0.35), rgba(157,124,255,0.25));
+      color: rgba(25,34,72,0.94);
+      font-weight: 650;
+    }
+
+    .bullets{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .b{
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--soft);
+      background: rgba(255,255,255,0.64);
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.5;
+    }
+
+    .testimonial{
+      margin-top: 14px;
+      padding: 18px 20px;
+      border-radius: var(--radius2);
+      border: 1px solid var(--soft);
+      background: rgba(255,255,255,0.70);
+    }
+
+    .testimonial-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .testimonial-stars{
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: rgba(23,31,52,0.9);
+    }
+
+    .testimonial-name{
+      font-size: 13px;
+      font-weight: 750;
+      color: var(--ink2);
+    }
+
+    .testimonial-body{
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .testimonial-body p{
+      margin: 0 0 10px;
+    }
+
+    .testimonial-body p:last-child{
+      margin-bottom: 0;
+    }
+
+    footer{
+      padding: 28px 0 40px;
+      color: var(--muted2);
+      font-size: 12px;
+    }
+
+    footer .foot{
+      display:flex;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap:wrap;
+      border-top: 1px solid var(--soft);
+      padding-top: 16px;
+    }
+
+    @media (max-width: 900px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .waves{ top: 320px; height: 560px; opacity: 0.86; }
+      .bullets{ grid-template-columns: 1fr; }
+      .chapter{ align-items:flex-start; }
+      .chapter span{ white-space:normal; }
+      .cta-wrap{ justify-content:center; }
+      .testimonial{ padding: 16px; }
+    }
+  </style>
+</head>
+
+<body>
+  <svg class="waves" viewBox="0 0 1200 540" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0" stop-color="#8fd6ff" stop-opacity="0.92"/>
+        <stop offset="0.55" stop-color="#7c9cff" stop-opacity="0.56"/>
+        <stop offset="1" stop-color="#9d7cff" stop-opacity="0.26"/>
+      </linearGradient>
+      <linearGradient id="g2" x1="0" x2="1" y1="1" y2="0">
+        <stop offset="0" stop-color="#7c9cff" stop-opacity="0.52"/>
+        <stop offset="0.55" stop-color="#9d7cff" stop-opacity="0.36"/>
+        <stop offset="1" stop-color="#ffffff" stop-opacity="0.18"/>
+      </linearGradient>
+      <linearGradient id="g3" x1="0" x2="1" y1="0" y2="0">
+        <stop offset="0" stop-color="#8fd6ff" stop-opacity="0.36"/>
+        <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.20"/>
+        <stop offset="1" stop-color="#8a6dff" stop-opacity="0.34"/>
+      </linearGradient>
+      <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="1.2"/>
+      </filter>
+    </defs>
+
+    <path filter="url(#blur)" d="M0,360 C230,275 400,305 560,345 C740,392 860,428 1200,345 L1200,540 L0,540 Z"
+          fill="url(#g1)" opacity="0.86"/>
+    <path filter="url(#blur)" d="M0,408 C220,325 420,338 600,388 C760,434 900,470 1200,398 L1200,540 L0,540 Z"
+          fill="url(#g2)" opacity="0.82"/>
+    <path filter="url(#blur)" d="M0,440 C260,368 450,382 620,426 C780,466 920,506 1200,446 L1200,540 L0,540 Z"
+          fill="url(#g3)" opacity="0.66"/>
+    <path d="M85,440 C335,338 520,390 705,418 C862,442 982,458 1125,428"
+          fill="none" stroke="rgba(23,31,52,0.12)" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+
+  <div class="wrap">
+    <header>
+      <div class="nav">
+        <div class="brand">
+          <strong>SwiftData Architecture</strong>
+          <span>Building Real-World Data-Driven Applications</span>
+        </div>
+
+        <div class="navlinks">
+          <a href="#chapters">Chapters</a>
+          <a href="#audience">Audience</a>
+          <a href="#buy">Buy</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="hero" id="buy">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker"><i></i> SwiftData beyond the basics</div>
+
+          <h1>Build SwiftData Apps That Scale Past the Tutorial.</h1>
+
+          <p class="sub">
+            A practical guide to SwiftData architecture, relationships, queries, migrations,
+            CloudKit, testing, debugging, background processing, custom stores, and performance.
+            Learn how SwiftData works in real applications, not just simple demos.
+          </p>
+
+          <div class="cta-wrap">
+            <div class="actions">
+              <a href="#" target="_blank" rel="noreferrer" class="btn buy">
+                Buy Ebook — $39
+              </a>
+
+              <a href="#" target="_blank" rel="noreferrer" class="btn">
+                Download Free Chapter
+              </a>
+
+              <p class="cta-note">
+                Replace the button URLs with your Teachable, Gumroad, or Kit links when ready.
+              </p>
+            </div>
+          </div>
+
+          <section class="section" style="padding-bottom: 20px;" id="book-details">
+            <h2>Book Details</h2>
+            <p>
+              A real-world SwiftData architecture guide available as a digital ebook.
+              Designed for developers building production SwiftUI applications with persistent data.
+            </p>
+          </section>
+        </div>
+
+        <aside class="cover-card" aria-label="Book cover">
+          <div class="cover">
+            <img src="/images/swiftdata-book-cover.png"
+                 alt="SwiftData Architecture book cover"
+                 onerror="this.style.display='none'; this.parentElement.querySelector('.cover-fallback').style.display='flex';" />
+            <div class="cover-fallback" style="display:none;">
+              <small>Mohammad Azam</small>
+              <strong>SwiftData Architecture</strong>
+              <span>Building Real-World Data-Driven Applications</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <section class="section" id="chapters">
+      <h2>Chapters</h2>
+      <p>Here’s the current table of contents.</p>
+
+      <div class="chapters" aria-label="Chapter list">
+        <div class="chapter"><strong>Introduction</strong><span class="tag available">Available</span></div>
+        <div class="chapter"><strong>Architecture</strong><span class="tag available">Available</span></div>
+        <div class="chapter"><strong>ModelContext</strong><span class="tag available">Available</span></div>
+        <div class="chapter"><strong>Relationships</strong><span class="tag available">Available</span></div>
+        <div class="chapter"><strong>Queries</strong><span class="tag available">Available</span></div>
+        <div class="chapter"><strong>Debugging</strong><span class="tag available">Available</span></div>
+        <div class="chapter"><strong>Previews</strong><span class="tag available">Available</span></div>
+        <div class="chapter"><strong>Migrations</strong><span class="tag available">Available</span></div>
+        <div class="chapter"><strong>Storing Transformable and Binary Types</strong><span class="tag available">Available</span></div>
+        <div class="chapter"><strong>Testing SwiftData</strong><span class="tag available">Available</span></div>
+        <div class="chapter"><strong>Abstracting SwiftData</strong><span class="tag available">Available</span></div>
+        <div class="chapter"><strong>Migrating from Core Data to SwiftData</strong><span class="tag available">Available</span></div>
+        <div class="chapter"><strong>SwiftData with UIKit</strong><span class="tag available">Available</span></div>
+        <div class="chapter"><strong>SwiftData in the Background</strong><span class="tag available">Available</span></div>
+        <div class="chapter"><strong>SwiftData with iCloud</strong><span class="tag available">Available</span></div>
+        <div class="chapter"><strong>Custom Data Stores</strong><span class="tag available">Available</span></div>
+        <div class="chapter"><strong>Performance Optimizations</strong><span class="tag available">Available</span></div>
+        <div class="chapter"><strong>Conclusion</strong><span class="tag available">Available</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="audience">
+      <h2>Who this book is for</h2>
+
+      <p>
+        This book is for SwiftUI developers who already understand the basics of SwiftData
+        and now want to build real applications with it.
+      </p>
+
+      <div class="bullets">
+        <div class="b">Developers who want to understand ModelContext, ModelContainer, and change tracking</div>
+        <div class="b">iOS developers building apps with relationships, queries, migrations, and CloudKit</div>
+        <div class="b">Teams that need practical strategies for testing, debugging, and performance</div>
+        <div class="b">Developers who want to move beyond simple demos and learn real-world SwiftData architecture</div>
+      </div>
+
+      <br>
+
+      <p class="note">
+        You’ll learn how SwiftData behaves behind the scenes, how to structure your models,
+        how to query data effectively, how to debug the underlying SQLite store, and how to
+        design apps that remain maintainable as your data layer grows.
+      </p>
+    </section>
+
+    <!-- 
+    <section class="section" id="testimonial">
+      <h2>What people are saying</h2>
+
+      <div class="testimonial">
+        <div class="testimonial-header">
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <div class="testimonial-name">Early Reader</div>
+        </div>
+
+        <div class="testimonial-body">
+          <p>
+            This is the SwiftData book I wanted when I moved past the basics. It does not just
+            show how to insert and fetch records. It explains relationships, debugging, CloudKit,
+            performance, and the architectural decisions that matter in real apps.
+          </p>
+          <p>
+            The examples are practical and the explanations are clear. It feels like someone
+            is walking through the problems SwiftData developers actually run into.
+          </p>
+        </div>
+      </div>
+    </section>
+-->
+
+    <section class="section" id="details">
+      <h2>What you’ll get</h2>
+
+      <p>
+        A practical, experience-driven guide to building SwiftData applications with confidence.
+        Instead of treating SwiftData as a magic persistence layer, this book helps you understand
+        what is happening underneath so you can make better architectural decisions.
+      </p>
+
+      <br>
+
+      <p>
+        Your purchase includes the digital ebook and future updates as SwiftData continues to evolve.
+      </p>
+    </section>
+
+    <div class="cta-wrap">
+      <div class="actions">
+        <a href="#" target="_blank" rel="noreferrer" class="btn buy">
+          Buy Now — $39
+        </a>
+
+        <a href="#" target="_blank" rel="noreferrer" class="btn">
+          Download Free Chapter
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      <div class="foot">
+        <div>© <span id="y"></span> Mohammad Azam</div>
+        <div>
+          <a href="https://azamsharp.school" target="_blank" rel="noreferrer" style="color:var(--ink2); text-decoration:none;">
+            azamsharp.school
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
