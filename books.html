@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Books — Mohammad Azam</title>
+
+  <style>
+    :root{
+      --ink:#171f34;
+      --ink2:#263453;
+      --muted:rgba(23,31,52,0.72);
+      --muted2:rgba(23,31,52,0.55);
+      --mist:#f4f6fb;
+      --soft:rgba(23,31,52,0.08);
+      --line:rgba(23,31,52,0.14);
+      --ctaA:#6d8cff;
+      --ctaB:#8a6dff;
+      --ctaInk:#ffffff;
+      --radius:22px;
+      --max:1080px;
+      --font:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--ink);
+      background:var(--mist);
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:0.23;
+      background-image:radial-gradient(rgba(23,31,52,0.06) 1px, transparent 1px);
+      background-size:14px 14px;
+      mix-blend-mode:multiply;
+    }
+
+    .wrap{
+      width:min(var(--max), calc(100% - 40px));
+      margin:0 auto;
+      position:relative;
+      z-index:1;
+    }
+
+    header{
+      padding:24px 0 10px;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
+      text-decoration:none;
+    }
+
+    .brand strong{
+      font-size:14px;
+      letter-spacing:0.7px;
+      text-transform:uppercase;
+      color:var(--ink2);
+    }
+
+    .brand span{
+      font-size:12px;
+      color:var(--muted2);
+      margin-top:6px;
+    }
+
+    .navlinks{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+
+    .navlinks a{
+      color:var(--muted);
+      font-size:13px;
+      text-decoration:none;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+      transition:160ms ease;
+    }
+
+    .navlinks a:hover{
+      border-color:var(--soft);
+      background:rgba(255,255,255,0.64);
+    }
+
+    .hero{
+      padding:58px 0 34px;
+      text-align:center;
+    }
+
+    .kicker{
+      color:var(--muted2);
+      font-size:12px;
+      letter-spacing:0.4px;
+      text-transform:uppercase;
+      font-weight:700;
+      margin-bottom:14px;
+    }
+
+    h1{
+      margin:0 auto 14px;
+      max-width:850px;
+      font-size:clamp(38px, 5vw, 64px);
+      letter-spacing:-1.5px;
+      line-height:1.02;
+    }
+
+    .hero p{
+      margin:0 auto;
+      max-width:680px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.7;
+    }
+
+    .book-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      padding:24px 0 44px;
+    }
+
+    .book-card{
+      border:1px solid var(--soft);
+      background:rgba(255,255,255,0.72);
+      border-radius:var(--radius);
+      padding:24px;
+      display:grid;
+      grid-template-columns:0.9fr 1.1fr;
+      gap:22px;
+      align-items:center;
+      box-shadow:0 24px 70px rgba(23,31,52,0.06);
+    }
+
+    .book-cover{
+      width:100%;
+      border-radius:18px;
+      overflow:hidden;
+    }
+
+    .book-cover img{
+      width:100%;
+      display:block;
+      object-fit:contain;
+    }
+
+    .book-content h2{
+      margin:0 0 8px;
+      font-size:26px;
+      letter-spacing:-0.6px;
+      line-height:1.1;
+      color:var(--ink);
+    }
+
+    .subtitle{
+      margin:0 0 12px;
+      font-size:14px;
+      color:var(--ink2);
+      font-weight:700;
+      line-height:1.5;
+    }
+
+    .desc{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.7;
+    }
+
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:18px;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--soft);
+      background:rgba(255,255,255,0.72);
+      color:var(--muted);
+      font-size:12px;
+      font-weight:650;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:13px 18px;
+      border-radius:999px;
+      text-decoration:none;
+      color:var(--ctaInk);
+      font-weight:760;
+      font-size:14px;
+      letter-spacing:0.25px;
+      background:linear-gradient(135deg, var(--ctaA), var(--ctaB));
+      border:1px solid rgba(70,87,190,0.28);
+      box-shadow:0 18px 42px rgba(82,96,210,0.20), inset 0 1px 0 rgba(255,255,255,0.42);
+      transition:160ms ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+      box-shadow:0 22px 52px rgba(82,96,210,0.28), inset 0 1px 0 rgba(255,255,255,0.52);
+    }
+
+    .compare{
+      padding:8px 0 42px;
+    }
+
+    .compare-box{
+      border:1px solid var(--soft);
+      background:rgba(255,255,255,0.66);
+      border-radius:var(--radius);
+      padding:22px;
+    }
+
+    .compare h2{
+      margin:0 0 10px;
+      font-size:20px;
+      letter-spacing:-0.4px;
+    }
+
+    .compare p{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.7;
+      max-width:82ch;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      overflow:hidden;
+      border-radius:16px;
+      font-size:14px;
+    }
+
+    th,td{
+      text-align:left;
+      padding:14px;
+      border-bottom:1px solid var(--soft);
+      vertical-align:top;
+    }
+
+    th{
+      color:var(--ink2);
+      background:rgba(255,255,255,0.68);
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:0.35px;
+    }
+
+    td{
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    tr:last-child td{
+      border-bottom:none;
+    }
+
+    footer{
+      padding:28px 0 40px;
+      color:var(--muted2);
+      font-size:12px;
+    }
+
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid var(--soft);
+      padding-top:16px;
+    }
+
+    .foot a{
+      color:var(--ink2);
+      text-decoration:none;
+    }
+
+    @media (max-width: 980px){
+      .book-grid{
+        grid-template-columns:1fr;
+      }
+
+      .book-card{
+        grid-template-columns:0.75fr 1.25fr;
+      }
+    }
+
+    @media (max-width: 680px){
+      .wrap{
+        width:min(var(--max), calc(100% - 28px));
+      }
+
+      header{
+        padding-top:18px;
+      }
+
+      .nav{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .hero{
+        padding:42px 0 22px;
+        text-align:left;
+      }
+
+      .hero p{
+        margin-left:0;
+      }
+
+      .book-card{
+        grid-template-columns:1fr;
+        padding:20px;
+      }
+
+      .book-cover{
+        max-width:260px;
+        margin:0 auto;
+      }
+
+      h1{
+        font-size:42px;
+      }
+
+      table, thead, tbody, th, td, tr{
+        display:block;
+      }
+
+      thead{
+        display:none;
+      }
+
+      tr{
+        border-bottom:1px solid var(--soft);
+        padding:12px 0;
+      }
+
+      tr:last-child{
+        border-bottom:none;
+      }
+
+      td{
+        border-bottom:none;
+        padding:6px 0;
+      }
+
+      td::before{
+        content:attr(data-label);
+        display:block;
+        color:var(--ink2);
+        font-weight:750;
+        margin-bottom:2px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <nav class="nav">
+        <a class="brand" href="/">
+          <strong>Mohammad Azam</strong>
+          <span>Books for Swift Developers</span>
+        </a>
+
+        <div class="navlinks">
+          <a href="/">Home</a>
+          <a href="/books.html">Books</a>
+          <a href="https://azamsharp.school" target="_blank" rel="noreferrer">AzamSharp School</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="kicker">Books</div>
+        <h1>Books for Developers Who Want to Build Real Applications.</h1>
+        <p>
+          Practical books for Swift and SwiftUI developers who want to move beyond tutorials
+          and build applications that are easier to understand, maintain, and evolve.
+        </p>
+      </section>
+
+      <section class="book-grid" aria-label="Books">
+        <article class="book-card">
+          <div class="book-cover">
+            <img src="/images/swiftui-architecture-3d-cover.png" alt="SwiftUI Architecture book cover">
+          </div>
+
+          <div class="book-content">
+            <h2>SwiftUI Architecture</h2>
+            <p class="subtitle">Patterns and Practices for Building Scalable Applications</p>
+            <p class="desc">
+              Learn practical SwiftUI architecture patterns for state management, navigation,
+              dependency management, testing, communication between features, and building
+              applications that can grow beyond simple demos.
+            </p>
+
+            
+            <a class="btn" href="swiftui-architecture-book.html" target="_self">
+              View Book
+            </a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div class="book-cover">
+            <img src="/images/swiftdata-3d-cover.png" alt="SwiftData Architecture book cover">
+          </div>
+
+          <div class="book-content">
+            <h2>SwiftData Architecture</h2>
+            <p class="subtitle">Building Real-World Data-Driven Applications</p>
+            <p class="desc">
+              Learn how SwiftData works in real applications, including relationships, queries,
+              migrations, CloudKit, testing, debugging, background processing, custom stores,
+              UIKit integration, and performance optimization.
+            </p>
+            
+            <a class="btn" href="swiftdata-architecture.html" target="_self">
+              View Book
+            </a>
+          </div>
+        </article>
+      </section>
+
+      <section class="compare">
+        <div class="compare-box">
+          <h2>Which book should you read?</h2>
+          <p>
+            Both books focus on building real-world Swift applications, but they solve different
+            problems. SwiftUI Architecture focuses on application structure. SwiftData Architecture
+            focuses on persistence and data-driven applications.
+          </p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Book</th>
+                <th>Focus</th>
+                <th>Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Book"><strong>SwiftUI Architecture</strong></td>
+                <td data-label="Focus">
+                  State management, navigation, dependency management, testing, feature boundaries,
+                  and scalable SwiftUI application design.
+                </td>
+                <td data-label="Best For">
+                  Developers who want to structure larger SwiftUI applications and move beyond
+                  simple view-based examples.
+                </td>
+              </tr>
+
+              <tr>
+                <td data-label="Book"><strong>SwiftData Architecture</strong></td>
+                <td data-label="Focus">
+                  Persistence, relationships, queries, migrations, CloudKit synchronization,
+                  background processing, custom stores, and performance.
+                </td>
+                <td data-label="Best For">
+                  Developers building SwiftUI applications that store, query, synchronize,
+                  and manage persistent data.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="foot">
+        <div>© <span id="y"></span> Mohammad Azam</div>
+        <div>
+          <a href="https://azamsharp.school" target="_blank" rel="noreferrer">
+            azamsharp.school
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
