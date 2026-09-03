@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HTCH78K3CD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HTCH78K3CD');
+</script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AzamSharp School</title>
+
+  <!-- icofont-css-link -->
+  <link rel="stylesheet" href="css/icofont.min.css">
+  <!-- Owl-Carosal-Style-link -->
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <!-- Bootstrap-Style-link -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Aos-Style-link -->
+  <link rel="stylesheet" href="css/aos.css">
+  <!-- Coustome-Style-link -->									
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Responsive-Style-link -->
+  <link rel="stylesheet" href="css/responsive.css">		
+
+  <link rel="stylesheet" href="css/custom.css">		
+  <!-- Favicon -->						
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+  <link rel="stylesheet" href="css/blackfriday.css">
+
+  <!-- For Notifications -->
+  
+
+  <style>
+    .toast {
+        position: fixed;
+        bottom: 10px; /* Adjust this value as needed */
+        left: 10px; /* Adjust this value as needed */
+        width: 300px; /* Adjust this value as needed */
+        z-index: 9999; 
+    }
+
+    .pro-badge {
+  color: #fff;
+  background-color: #0071eb;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* Full-width banner with compact spacing */
+#banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, #0078D4, #0056A4);
+    color: white;
+    text-align: center;
+    padding: 10px 12px;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 1;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px; /* Reduced gap for tighter layout */
+}
+
+/* Title with compact spacing */
+#title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: 0.5px; /* Reduce letter spacing for a tighter look */
+    display: block;
+    margin-bottom: 2px; /* Reduce margin between title and other text */
+}
+
+/* Highlighted price with reduced spacing */
+#price {
+    font-size: 18px;
+    color: #32CD32;
+    font-weight: bold;
+    background: #0b6623;
+    padding: 4px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 5px 0; /* Reduce margin for tighter spacing */
+}
+
+/* Compact button */
+.reserve-btn {
+    padding: 6px 14px; /* Smaller padding */
+    font-size: 14px; /* Reduce font size slightly */
+    font-weight: bold;
+    color: white;
+    background: #28A745;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effect for desktop users */
+.reserve-btn:hover {
+    background: #218838;
+    transform: scale(1.03);
+}
+
+/* Mobile-friendly adjustments */
+@media (max-width: 768px) {
+    #banner {
+        flex-direction: column;
+        padding: 12px; /* Compact padding */
+    }
+
+    #title {
+        font-size: 20px; /* Slightly smaller for mobile */
+    }
+
+    #price {
+        font-size: 16px;
+        margin: 3px 0; /* Reduce spacing further */
+    }
+
+    .reserve-btn {
+        padding: 5px 12px; /* Make button more compact */
+        font-size: 13px;
+    }
+}
+
+#close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.wwdc-banner {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  max-width: 700px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.wwdc-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.wwdc-content p {
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+}
+
+.wwdc-content .highlight {
+    color: #ffe600;
+    font-weight: 700;
+}
+
+.wwdc-content code {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.wwdc-sale-banner {
+  margin: 24px;
+  padding: 36px 64px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 122, 89, 0.35), transparent 35%),
+    radial-gradient(circle at top right, rgba(90, 120, 255, 0.4), transparent 35%),
+    linear-gradient(135deg, #0b1020, #111827 55%, #1e1b4b);
+  color: white;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.wwdc-sale-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+
+.wwdc-label {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fbbf24;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.wwdc-sale-banner h2 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.wwdc-copy {
+  max-width: 620px;
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.wwdc-sale-action {
+  min-width: 260px;
+  padding: 22px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  text-align: center;
+  backdrop-filter: blur(14px);
+}
+
+.coupon-label {
+  display: block;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.coupon-code {
+  display: block;
+  padding: 12px 18px;
+  border-radius: 14px;
+  background: white;
+  color: #111827;
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.wwdc-sale-action p {
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 760px) {
+  .wwdc-sale-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .wwdc-sale-action {
+    width: 100%;
+  }
+}
+        
+</style>
+
+<!-- End Notifications -->
+
+
+
+
+</head>
+
+<body>
+
+
+  <!-- Begin Toast -->
+  <div class="toast fade show" id="liveToast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+        <strong class="me-auto">AzamSharp School</strong>
+    </div>
+    <div id = "toastBody" class="toast-body">
+      Loading...
+    </div>
+</div>
+<!-- End Toast -->
+
+<!--
+<div id="banner">
+    <span id="title">Workshop: SwiftData Fundamentals</span>
+    <br>
+    <strong>May 16, 2025 at 11:00 AM - 2:00 PM CST</strong><br><br>
+    <a href="https://azamsharp.teachable.com/p/swiftdata-fundamentals-workshop" class="reserve-btn">Reserve a Spot for $129</a>
+    <span id="close-btn" onclick="closeBanner()">✖</span>
+</div>
+-->
+
+  
+  <!-- Page-wrapper-Start -->
+  <div class="page_wrapper">
+
+    <!-- 
+<section class="wwdc-sale-banner">
+  <div class="wwdc-sale-content">
+    <div>
+      <p class="wwdc-label">WWDC 2026 Sale</p>
+      <h2>30% Off Everything at AzamSharp School</h2>
+      <p class="wwdc-copy">
+        Level up your SwiftUI, SwiftData, AI, and server-side Swift skills during WWDC week.
+      </p>
+    </div>
+
+    <div class="wwdc-sale-action">
+      <span class="coupon-label">Use Code</span>
+      <span class="coupon-code">WWDC2026</span>
+      <p>Offer ends June 15, 2026</p>
+    </div>
+  </div>
+</section> -->
+
+
+    <!-- Preloader -->
+    <div id="preloader">
+      <div id="loader"></div>
+    </div>
+
+    <!-- Header Start -->
+    <header>
+      <!-- container start -->
+      <div class="container">
+      	<!-- navigation bar -->
+        <nav class="navbar navbar-expand-lg">
+          <a class="navbar-brand" href="#">
+            <h1 style = "color: white;">AzamSharp</h1>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+              <!-- <i class="icofont-navigation-menu ico_menu"></i> -->
+              <div class="toggle-wrap">
+                <span class="toggle-bar"></span>
+              </div>
+            </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+
+              <li class="nav-item active">
+                <a class="nav-link" href="#blog">Courses</a>
+              </li>
+
+               <li class="nav-item active">
+                <a class="nav-link" href="/books.html">Books</a>
+              </li>
+
+              <a class="nav-link" href="https://azamsharp.teachable.com/p/1-on-1-coaching" target="_blank">1-on-1 Coaching</a>
+
+
+              <li class="nav-item active">
+                <a class="nav-link" href="/workshops.html">Workshops</a>
+              </li>
+
+              <li class="nav-item active">
+                <a class="nav-link" href="#pricing">Become a Pro</a>
+              </li>
+
+             
+             
+              
+              <!-- secondery menu end -->
+
+            </ul>
+          </div>
+        </nav>
+        <!-- navigation end -->
+      </div>
+      <!-- container end -->
+    </header>
+
+    
+
+    <!-- Banner-Section-Start -->
+    <section class="banner_section">
+
+    
+      <!-- container start -->
+      <div class="container">
+        <!-- row start -->
+        <div class="row">
+          <div class="col-lg-7 col-md-12"  data-aos="fade-right" data-aos-duration="1500">
+          	<!-- banner text -->
+            <div class="banner_text">
+              <!-- h1 -->
+              <h1>Become a Highly Valued iOS Developer</h1>
+              <!-- p -->
+              <p style = "margin-bottom: 25px;">The ultimate collection of video tutorials for creating exceptional apps and mastering the Apple ecosystem. One of the largest catalog for iOS development videos.  
+              </p>
+              <a class="btn-grad" href="#blog">View Courses</a>
+            </div>
+          
+
+            <!-- users -->
+           
+          </div>
+
+          
+
+          
+
+          <!-- banner image start -->
+          <div class="col-lg-4 col-md-12"  data-aos="fade-in" data-aos-duration="1500">
+            <div class="banner_image">
+
+
+            </div>
+          </div>
+          <!-- banner image end -->
+
+        </div>
+        <!-- row end -->
+      </div>
+      <!-- container end -->
+    </section>
+    <!-- Banner-Section-end -->
+
+
+
+        <!-- Trusted Section start -->
+        <section class="row_am trusted_section">
+          <!-- container start -->
+          <div class="container">
+            <div class="section_title" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
+              <!-- h2 -->
+              <h2>Trusted by <span>150+</span> companies</h2>
+              <!-- p -->
+
+            </div>
+    
+            <!-- logos slider start -->
+            <div class="company_logos" >
+              <div id="company_slider" class="owl-carousel owl-theme">
+                <div class="item">
+                  <div class="logo">
+                    <img src="images/linkedinpng.png" alt="image" >
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="logo">
+                    <img src="images/applelogo.png" alt="image" >
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="logo">
+                    <img src="images/chaselogo.png" alt="image" >
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="logo">
+                    <img src="images/willowtreeappslogo.png" alt="image" >
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="logo">
+                    <img src="images/comcastlogo.png" alt="image" >
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="logo">
+                    <img src="images/alaskaairlineslogo.png" alt="image" >
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="logo">
+                    <img src="images/medium-logo.png" alt="image" >
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="logo">
+                    <img src="images/attlogo.png" alt="image" >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- logos slider end -->
+          </div>
+          <!-- container end -->
+        </section>
+        <!-- Trusted Section ends -->
+    
+
+        <!-- About-App-Section-Start -->
+        <section class="row_am about_app_section">
+          <!-- container start -->
+          <div class="container">
+            <!-- row start -->
+            <div class="row">
+              <div class="col-lg-6">
+    
+                <!-- about images -->
+                <div class="about_img" data-aos="fade-in" data-aos-duration="1500">
+                  <div class="frame_img">
+                    <img class="moving_position_animatin" src="images/azam.png" alt="image" >
+                  </div>
+                 
+                </div>
+              </div>
+              <div class="col-lg-6">
+    
+                <!-- about text -->
+                <div class="about_text">
+                  <div class="section_title" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
+                    <h5>Hello,</h5>
+                    <!-- h2 -->
+                    <h2>I am<span> Mohammad Azam</span></h2>
+    
+                    <!-- p -->
+                    <p>
+                      Mohammad Azam is a seasoned developer with over a decade of experience, contributing to the success of Fortune 500 companies such as Valic, AIG, Dell, Baker Hughes, and Blinds.com as a lead mobile developer. He is also a top mobile instructor with over 80K students worldwide. Currently, Azam serves as an instructor at a coding bootcamp, where he trains developers who have subsequently secured positions at prestigious companies like Apple and JP Morgan Chase.
+                    </p>
+                  </div>
+    
+                  <!-- UL -->
+                  <ul class="app_statstic" id="counter" data-aos="fade-in" data-aos-duration="1500">
+                    <li>
+                      
+                      <div class="text">
+                        <p><span class="counter-value" data-count="94">0</span><span>K+</span></p>
+                        <p>Students</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="text">
+                        <p><span class="counter-value" data-count="20">0</span><span>YRS+</span></p>
+                        <p>Experience</p>
+                      </div>
+                    </li>
+                    <li>
+                     
+                      <div class="text">
+                        <p><span class="counter-value" data-count="24">0</span><span>+</span></p>
+                        <p>Courses</p>
+                      </div>
+                    </li>
+                    <li>
+                     
+                      <div class="text">
+                        <p><span class="counter-value" data-count="150">0</span><span>+</span></p>
+                        <p>Hours</p>
+                      </div>
+                    </li>
+                  </ul>
+                  <!-- UL end -->
+                  
+                </div>
+              </div>
+            </div>
+            <!-- row end -->
+          </div>
+          <!-- container end -->
+          
+        </section>
+        <!-- About-App-Section-end -->
+
+      <!-- Testimonials -->
+      
+      <!-- Testimonial-Section start -->
+        
+      
+       <!-- Testimonial-Section start -->
+    <section class="row_am testimonial_section"> 
+      <!-- container start -->
+      <div class="container">
+        <div class="section_title" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+          <!-- h2 -->
+          <h2>What our <span>students say</span></h2>
+          <!-- p -->
+        </div>
+          <!--Review List Section Start-->
+    <section class="row_am review_list_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="review_box">
+              <div class="rating">
+                <ul>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                </ul>
+              </div>
+              
+              <p>
+                I fully recommend this course to anybody who is learning Swift and wants to learn more about the mapKit framework. The instructor is superb and is very experienced. This course is ideal for beginners, intermediate and even experienced iOS developers. There is something new to learn for everybody about mapKit. I rate this course 10 out of 10. Mohammad Azam is a world class teacher and it was a pleasure following his lessons.
+              </p>
+              <div class="reviewer">
+                  <div class="avtar">
+                    <img src="images/chapman.png" alt="image">
+                  </div>
+                  <div class="text">
+                    <h3>Michael Chapman</h3>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="review_box">
+              <div class="rating">
+                <ul>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                </ul>
+              </div>
+             
+              <p>
+                I have officially completed every course made by this man. What an incredible teacher; I feel that I have leveled up in so many ways watching his videos. He hits the instructional mark by not just telling you what to do, but why we do it that way. You have a forever customer. Thank you. I get to utilize these new skills every day at work.
+              </p>
+              <div class="reviewer">
+                  <div class="avtar">
+                    <img src="images/sako.png" alt="image">
+                  </div>
+                  <div class="text">
+                    <h3>Sako Hovaguimian</h3>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="review_box">
+              <div class="rating">
+                <ul>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                </ul>
+              </div>
+             
+              <p>
+                Mohammad Azam is always on the cutting edge. SwiftData was just *announced* and he's already teaching the world how to use it. Azam courses are full of great content, have excellent presentation, and smoothly progress through a well organized hierarchy of topics. I have no doubt this latest course will be very useful and popular as iOS 17 development begins in earnest this summer.
+              </p>
+              <div class="reviewer">
+                  <div class="avtar">
+                    <img src="images/Stephen-Tolton.png" alt="image">
+                  </div>
+                  <div class="text">
+                    <h3>Stephen Tolton</h3>
+                  </div>
+              </div>
+            </div>
+          </div>
+         
+          <div class="col-lg-4 col-md-6">
+            <div class="review_box">
+              <div class="rating">
+                <ul>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                </ul>
+              </div>
+             
+              <p>
+                If you want to be first out of the gate in learning new APIs from Apple then this is where you should look. @azamsharp is so fast at getting quality, practical content out to you before you even realize it. I highly recommend these courses for beginners and seasoned developers.
+              </p>
+              <div class="reviewer">
+                  <div class="avtar">
+                    <img src="images/stewart.png" alt="image">
+                  </div>
+                  <div class="text">
+                    <h3>Stewart Lynch</h3>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="review_box">
+              <div class="rating">
+                <ul>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                </ul>
+              </div>
+              <p>
+                I am a full time software developer. This course is exactly what I was looking for. I've purchased several other Swift courses in the past, but everything was too dumbed down for me. This course actually goes in depth with building real world apps, and gives much needed knowledge for app building. Thanks very much for the course.
+              </p>
+              <div class="reviewer">
+                  <div class="avtar">
+                    <img src="images/aj.png" alt="image">
+                  </div>
+                  <div class="text">
+                    <h3>Adam Januszewski</h3>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="review_box">
+              <div class="rating">
+                <ul>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                  <li><span><i class="icofont-star"></i></span></li>
+                </ul>
+              </div>
+             
+              <p>
+                As usual like many other lecturers from Mohammed Azam this is excellent. Even though we have SwiftData, async/await, Combine will have its place for event driven apps that are interested in events outside of a database. This course covers the core concepts well from a Swift point of view. Thank you, Azam!
+              </p>
+              <div class="reviewer">
+                  <div class="avtar">
+                    <img src="images/santosh.png" alt="image">
+                  </div>
+                  <div class="text">
+                    <h3>Santhosh Nair</h3>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>     
+      </div>
+    <!-- container end -->
+    </section>
+    <!-- Testimonial-Section end -->
+
+        
+          
+        
+    <!-- Testimonial-Section end -->
+
+    <!-- Features-Section-Start -->
+    <section class="row_am features_section" id="features">
+      <!-- container start -->
+      <div class="container">
+        <div class="section_title" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
+          <!-- h2 -->
+          <h2>Why<span> AzamSharp</span> School?</h2>
+          <!-- p -->
+        </div>
+        <div class="feature_detail">
+          <!-- feature box left -->
+          <div class="left_data feature_box">
+  
+          	<!-- feature box -->
+            <div class="data_block block1" data-aos="fade-right" data-aos-duration="1500">
+              <div class="icon">
+                <img src="images/xcode-icon.png" alt="image" >
+              </div>
+              <div class="text">
+                <h4>Specialized iOS Focus</h4>
+                <p>We don’t just teach iOS — we live and breathe it. From Swift and SwiftUI to Core Data and server-side Swift, our courses are tailored to give you a complete mastery of the iOS ecosystem.
+                </p>
+              </div>
+            
+            </div>
+
+            <!-- feature box -->
+            <div class="data_block block2" data-aos="fade-right" data-aos-duration="1500">
+              <div class="icon">
+                <img src="images/hands-on.png" alt="image" >
+              </div>
+              <div class="text">
+                <h4>Hands-On Learning</h4>
+                <p>Learn by building. Every course is packed with hands-on projects — from machine learning integration to server-side Swift — so you walk away with real-world experience, not just theory.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- feature box right -->
+          <div class="right_data feature_box">
+
+          	<!-- feature box -->
+            <div class="data_block block3" data-aos="fade-left" data-aos-duration="1500">
+              <div class="icon">
+                <img src="images/medal.png" alt="image" >
+              </div>
+              <div class="text">
+                <h4>Expert-Led Instruction</h4>
+                <p>Learn directly from Mohammad Azam — a seasoned iOS developer and instructor who has taught over 100,000 students and brings real-world insight into every lesson.</p>
+              </div>
+            </div>
+
+            <!-- feature box -->
+            <div class="data_block block4" data-aos="fade-left" data-aos-duration="1500">
+              <div class="icon">
+                <img src="images/molecule.png" alt="image" >
+              </div>
+              <div class="text">
+                <h4>Cutting-Edge Curriculum</h4>
+                <p>Stay ahead of the curve. Our courses are constantly updated to include the latest in iOS and machine learning — helping you stay competitive in a fast-moving tech world.</p>
+              </div>
+            
+            </div>
+
+          </div>
+          <!-- feature image -->
+         
+        </div>
+      </div>
+      <!-- container end -->
+    </section>
+    <!-- Features-Section-end -->
+
+    <!-- Pricing-Section -->
+    <section class="row_am pricing_section" id="pricing">
+      <!-- container start -->
+      <div class="container">
+        <div class="section_title" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+          <!-- h2 -->
+          <h2>Best & simple <span>pricing</span></h2>
+          <p>Enhance your coding skills to their fullest extent by gaining unlimited access to both current and upcoming courses.</p>
+          <!-- p -->
+        </div>
+       
+
+        <!-- pricing box  monthly start -->
+
+        <div class="pricing_pannel monthly_plan active" data-aos="fade-up" data-aos-duration="1500">
+       
+          <!-- row start -->
+          <div class="row flex-center">
+          	<!-- pricing box 1 -->
+            <div class="col-md-4">
+              <div class="pricing_block">
+                <div class="icon">
+                  <img src="images/standard.png" alt="image" >
+                </div>
+                <div class="pkg_name">
+                  <h3>Monthly</h3>
+                </div>
+                <span class="price">$39</span>
+                  <ul class="benifits">
+                  <li>
+                    <p>✅ 24 Comprehensive Courses</p>
+                  </li>
+                  <li>
+                    <p>📺 150+ Hours of Video Content</p>
+                  </li>
+                  <li>
+                    <p>🧠 Monthly Q&A Sessions</p>
+                  </li>
+                 
+                  <li>
+                    <p>📚 Digital Books Included</p>  
+                  </li>
+                  <li>
+                    <p>📥 Downloadable Resources</p>
+                  </li>
+                  
+                  <li>
+                    <p>🔓 Full Access While Subscribed</p>
+                  </li>
+                  <li>
+                    <p>⏱ Learn at Your Own Pace</p>
+                  </li>
+                </ul>
+                <a href="https://azamsharp.teachable.com/purchase?product_id=6289092" class="btn white_btn">Become a Pro</a>
+
+                <label style="display:block;"></label>
+                <p style="font-size:x-small; color: black; font-weight: bold; ">Join risk-free — Cancel anytime!</p>
+              </div>
+            </div>
+
+            <!-- pricing box 2 -->
+            <div class="col-md-4">
+              <div class="pricing_block highlited_block">
+                <!-- <div style = "color: white; position: absolute; top: 2%; right: 10%;">Save $50</div> -->
+                <div class = "most-popular">Save $99</div>
+                <div class="icon"> 
+                  <img src="images/unlimited.png" alt="image" >
+                </div>
+                <div class="pkg_name">
+                  <h3>Annual</h3>
+                </div>
+                <span class="price">$369</span>
+                <ul class="benifits">
+                  <li>
+                    <p>✅ 24 Comprehensive Courses</p>
+                  </li>
+                  <li>
+                    <p>📺 150+ Hours of Video Content</p>
+                  </li>
+                  <li>
+                    <p>🧠 Monthly Q&A Sessions</p>
+                  </li>
+                  <li>
+                    <p>
+                    🚀 <b>Free Workshops</b>
+                    </p>
+                </li>
+                  <li>
+                    <p>📚 Digital Books Included</p>  
+                  </li>
+                  <li>
+                    <p>📥 Downloadable Resources</p>
+                  </li>
+                  <li style = "color: white; font-weight: bold; font-size: 1.1em; padding: 5px; border-radius: 5px; display: inline-block;"">
+                    <p>📞 Annual 1-on-1 Call with Azam</p>
+                  </li>
+                  <li>
+                    <p>🔓 Full Access While Subscribed</p>
+                  </li>
+                  <li>
+                    <p>⏱ Learn at Your Own Pace</p>
+                  </li>
+                </ul>
+                <a href="https://azamsharp.teachable.com/purchase?product_id=6355766" class="btn white_btn" >Become a Pro</a>
+                <label style="display:block;"></label>
+                <p style="font-size:x-small; color: white; font-weight: bold; ">Join risk-free — Cancel anytime!</p>
+              </div>
+            </div>
+
+          </div>
+          <!-- row end -->
+        </div>
+
+
+
+       <div class="section_title" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300" style="text-align: center;">
+  <h2>🎯 Try It, Risk-Free</h2>
+  <p style="font-size: 1.1em; max-width: 600px; margin: 0 auto;">
+    I’m confident you’ll love the courses and workshops. But if it’s not the right fit, you’re protected by our 
+    <span class="highlight"><strong>14-day money-back guarantee</strong></span>. No questions asked.
+  </p>
+  <img src="/images/money-back.png" alt="Money-back Guarantee" style="width: 20%; min-width: 120px; margin-top: 16px;" />
+</div>
+
+      
+        <!-- pricing box yearly end -->
+
+      </div>
+      <!-- container start end -->
+    </section>
+    <!-- Pricing-Section end -->
+
+    <!-- Story-Section-Start -->
+    <section class="row_am latest_story" id="blog">
+      <!-- container start -->
+       <div class="container">
+
+           <div class="section_title" data-aos="fade-in" data-aos-duration="1500" data-aos-delay="100">
+               <h2>Courses Included with<span> Membership</span></h2>
+             
+           </div>
+           <!-- row start -->
+           <div class="row">
+
+            <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/azamsharp-pro-for-all-content">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                  
+                     <div class="story_img">
+                       <img src="images/pro-member-only.png" alt="image" >
+                     </div>   
+                     <div class="story_text">
+                         <h3>Exclusive Pro Member Only Content</h3>
+                         <p>AzamSharp Pro Members get exclusive access to iOS tutorials, real-world projects, behind-the-scenes coding tips, SwiftUI architecture deep dives, and premium content not available anywhere else.</p>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+                  <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/azamsharp-teachable-com-p-build-an-ai-chat-app-with-apple-foundation-models">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                  
+                     <div class="story_img">
+                       <img src="images/foundation-models-chat.png" alt="image" >
+                     </div>   
+                     <div class="story_text">
+                         <h3>Build an AI Chat App with Apple Foundation Models</h3>
+                         <p>Build a complete SwiftUI AI chat app using Apple’s Foundation Models framework, structured responses, custom tools, intent classification, multiple sessions, networking, location services, and MapKit from scratch.</p>
+                       <span>$89</span>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+                <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/practical-machine-learning-projects-in-python">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                  
+                     <div class="story_img">
+                       <img src="images/practical-machine-learning.png" alt="image" >
+                     </div>   
+                     <div class="story_text">
+                         <h3>Practical AI and Machine Learning Projects in Python</h3>
+                         <p>Learn how to build real world AI and machine learning projects using Python, Scikit-learn, TensorFlow, and Keras. Train models, preprocess datasets, build deep learning applications, and create practical machine learning solutions using modern AI tools and workflows.</p>
+                       <span>$149</span>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+                 <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/hummingbird-fundamentals">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                  
+                     <div class="story_img">
+                       <img src="images/hummingbird-image.png" alt="image" >
+                     </div>   
+                     <div class="story_text">
+                         <h3>Hummingbird Fundamentals - Build REST APIs in Swift</h3>
+                         <p>Learn to build fast, scalable REST APIs using Hummingbird. Configure routing, connect databases, handle authentication, and deploy production ready backend services using modern Swift concurrency.</p>
+                       <span>$149</span>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+                <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/storekit-2-for-in-app-purchases-and-subscriptions">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                  
+                     <div class="story_img">
+                       <img src="images/storekit2.png" alt="image" >
+                     </div>   
+                     <div class="story_text">
+                         <h3>StoreKit for In App Purchases and Subscriptions</h3>
+                         <p>Learn to implement in app purchases and subscriptions with StoreKit 2, configure App Store Connect products, manage entitlements, and build revenue ready experiences for your iOS apps.</p>
+                       <span>$149</span>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+            
+
+             <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/azamsharp-teachable-com-p-machine-learning-bootcamp-for-complete-beginners">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                  
+                     <div class="story_img">
+                       <img src="images/ml-bootcamp.png" alt="image" >
+                     </div>   
+                     <div class="story_text">
+                         <h3>Machine Learning Bootcamp for Complete Beginners</h3>
+                         <p>Learn Python, data handling, and core machine learning algorithms step by step. Build real projects, including a Flask web app, and gain hands-on skills—no prior experience required.
+</p>
+                       <span>$149</span>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+<div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/getting-started-with-the-foundation-models-framework">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                  
+                     <div class="story_img">
+                       <img src="images/foundation-models-framework.png" alt="image" >
+                     </div>   
+                     <div class="story_text">
+                         <h3>Getting Started with the Foundation Models Framework</h3>
+                         <p>Learn to harness Apple’s new Foundation Models Framework to build intelligent SwiftUI apps—interact with AI, stream responses, use guided generation, and create tools—all hands-on.
+</p>
+                       <span>$197</span>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+
+  <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/machine-learning-with-python-core-ml-and-vapor">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                  
+                     <div class="story_img">
+                       <img src="images/ml-vapor.png" alt="image" >
+                     </div>   
+                     <div class="story_text">
+                         <h3>Deploying Machine Learning Models Using Vapor and Core ML</h3>
+                         <p>Learn to train ML models in Python, convert to Core ML, integrate with SwiftUI apps, and deploy using Vapor—an end-to-end course for intelligent, full-stack iOS development.
+</p>
+                       <span>$149</span>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+                 <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/the-complete-guide-to-concurrency-in-swift">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                  
+                     <div class="story_img">
+                       <img src="images/concurrency-fundamentals.png" alt="image" >
+                     </div>   
+                     <div class="story_text">
+                         <h3>Concurrency Fundamentals in Swift</h3>
+                         <p>Build faster, smoother, and more responsive iOS apps using Swift’s modern concurrency model. Learn async/await, Tasks, and Actors to write safer, cleaner code without freezing UIs or callback hell.</p>
+                       <span>$149</span>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+            <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/pragmatic-testing-in-ios">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                  
+                     <div class="story_img">
+                       <img src="images/pragmatic-testing.png" alt="image" >
+                     </div>   
+                     <div class="story_text">
+                         <h3>Pragmatic Testing in iOS</h3>
+                         <p>Learn to write effective tests with confidence, covering TDD, stubs, mocks, UI testing, and view logic testing. Improve stability, maintainability, and productivity while preventing regressions in iOS apps.</p>
+                       <span>$149</span>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+            <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/build-gardening-app-using-swiftui-swiftdata">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                  
+                     <div class="story_img">
+                       <img src="images/green-thumb-logo.png" alt="image" >
+                     </div>   
+                     <div class="story_text">
+                         <h3>Build Gardening App Using SwiftUI & SwiftData</h3>
+                         <p>This course teaches you to build a vegetable gardening app using SwiftUI and SwiftData, covering API fetching, offline data, harvesting tracking, notes, images, pest details, search, and dark mode.</p>
+                       <span>$149</span>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+
+
+            <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/skip-fundamentals-build-native-ios-and-android-apps">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                  
+                     <div class="story_img">
+                       <img src="images/skip-logo.png" alt="image" >
+                     </div>   
+                     <div class="story_text">
+                         <h3>Skip Fundamentals - Build Native iOS and Android Apps</h3>
+                         <p>Master Skip, the lightweight framework for building cross-platform apps. Learn JSON API integration, create a maps app, and implement on-device storage with SkipSQL. Build amazing apps!</p>
+                       <span>$149</span>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+          
+
+            <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/full-stack-e-commerce-app-development-with-swiftui-node-js-and-postgres">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                  
+                     <div class="story_img">
+                       <img src="images/e-commerce.jpg" alt="image" >
+                     </div>   
+                     <div class="story_text">
+                         <h3>Full Stack E-Commerce App Development with SwiftUI, Node.js, and Postgres</h3>
+                         <p>Learn to build a full-stack e-commerce app using SwiftUI, Node.js, and Postgres, with features like user authentication, product management, order systems, and Stripe integration for payments.</p>
+                       <span>$149</span>
+                     
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+            
+
+
+             <!-- story -->
+             <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/swiftui-architecture-patterns-and-best-practices">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                  
+                     <div class="story_img">
+                       <img src="images/swiftui-architecture.png" alt="image" >
+                     </div>   
+                     <div class="story_text">
+                         <h3>SwiftUI Architecture - Patterns and Best Practices</h3>
+                         <p>This course teaches creating SwiftUI apps for Apple devices using the preferred MVVM design pattern. Explore real-world app development and understand MVVM in client/server scenarios.</p>
+                         <span>$149</span>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+             <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/supabase-for-ios-developers-the-complete-bootcamp">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                  
+                     <div class="story_img">
+                       <img src="images/supabase-ios-developers.png" alt="image" >
+                     </div>   
+                     <div class="story_text">
+                         <h3>Supabase for iOS Developers - The Complete Bootcamp</h3>
+                         <p>Learn to integrate Supabase with your iOS apps in this comprehensive course, covering database setup, user authentication, real-time features, and more, suitable for all skill levels.</p>
+                       <span>$149</span>
+                     
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+             <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/swiftui-vapor-full-stack-ios-development-bootcamp">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                     <div class="story_img">
+                       <img src="images/full-stack-development.png" alt="image" >
+                     </div>
+                     <div class="story_text">
+                           <h3>Full Stack iOS Development Bootcamp</h3>
+                           <p>Master full stack development with SwiftUI, Vapor, and Postgres for robust, scalable, secure web applications. Gain practical experience and enroll now!</p>
+                           <span><span style = "font-size: large">$197 </span></span>
+                       
+                     </div>
+                 </div>
+                 </a>
+             </div>
+ 
+             <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/core-data-in-ios-the-complete-app-development-bootcamp">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                     <div class="story_img">
+                       <img src="images/core-data-bootcamp.png" alt="image" >
+                     </div>
+                     <div class="story_text"> 
+                           <h3>Core Data Bootcamp</h3>
+                           <p>Learn Core Data for iOS app persistence with SwiftUI, CRUD, relationships, data management, and CloudKit.</p>
+                           <span><span style = "font-size: large">$89 </span><s style = "font-size: small; color: gray">$149</s></span>
+                           <div style = "color: green; font-weight: bold; font-size: small">Save 40%</div>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+ 
+  <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/realitykit-fundamentals-a-guide-for-building-ar-applications">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                     <div class="story_img">
+                       <img src="images/realitykit.png" alt="image" >
+                     </div>
+                     <div class="story_text">
+                           <h3>RealityKit Fundamentals</h3>
+                           <p>AR is the upcoming tech frontier. Learn to build AR apps with Apple's RealityKit framework in this course to stay ahead.</p>
+                           <span><span style = "font-size: large">$89 </span><s style = "font-size: small; color: gray">$149</s></span>
+                           <div style = "color: green; font-weight: bold; font-size: small">Save 40%</div>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+  <!-- story -->
+  <div class="col-md-4">
+    <a href = "https://azamsharp.teachable.com/p/swiftdata-build-apple-reminders-clone">
+       <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+        
+           <div class="story_img">
+             <img src="images/reminders-app-swiftdata.png" alt="image" >
+           </div>   
+           <div class="story_text">
+               <h3>Build Reminders App Clone Using SwiftData</h3>
+               <p>In this practical course, build the clone of Apple Reminders using SwiftUI and SwiftData. Learn data management, UI design, task creating, notifications and iCloud syncing as you clone the Apple reminders app.</p>
+             <span>$129</span>
+           </div>
+       </div>
+       </a>
+   </div>
+
+      <!-- story -->
+      
+
+             <!-- story -->
+             <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/reactive-programming-combine">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                     <div class="story_img">
+                       <img src="images/reactive-programming.png" alt="image" >
+                     </div>
+                     <div class="story_text">
+                           <h3>Reactive Programming in iOS Using Combine Framework</h3>
+                           <p>Explore iOS Combine Framework for reactive, efficient app development. Tailored for iOS devs with Swift and UIKit/SwiftUI knowledge.</p>
+                           <span>$69</span>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+           
+
+            
+
+             <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/swiftdata-bootcamp">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                     <div class="story_img">
+                       <img src="images/swiftdata-bootcamp.png" alt="image" >
+                     </div>
+                     <div class="story_text">
+                           <h3>SwiftData Bootcamp</h3>
+                           <p>Master SwiftData for seamless data persistence in Swift. Learn declarative code, relationships, querying, and develop robust, data-driven applications effortlessly. Join now!</p>
+                           <span>$129</span>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+
+             <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/introduction-to-server-driven-ui-in-ios-swift-swiftui">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                     <div class="story_img">
+                       <img src="images/server-driven-ui.png" alt="image" >
+                     </div>
+                     <div class="story_text">
+                           <h3>Beginning Server Driven UI</h3>
+                           <p>Discover Server-Driven UI, enabling instant app interface updates without version submission. Learn iOS implementation, advantages, and architecture.</p>
+                           <span><span style = "font-size: large">$197</span></span>
+
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+             <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/swiftui-for-mac-a-comprehensive-development-bootcamp">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                     <div class="story_img">
+                       <img src="images/macos-apps.png" alt="image" >
+                     </div>
+                     <div class="story_text">
+                           <h3>Programming macOS Using SwiftUI</h3>
+                           <p>macOS SwiftUI course: basics, state management, MVVM. Projects: Reminders (Core Data), Maps (NSViewRepresentable), Stocks (Web APIs, graphs).</p>
+                           <span>$49</span>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+            
+
+              <!-- story -->
+             
+
+             <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/mastering-swiftui-mapkit-the-complete-guide">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                     <div class="story_img">
+                       <img src="images/mapkit.png" alt="image" >
+                     </div>
+                     <div class="story_text">
+                           <h3>Mastering MapKit in SwiftUI</h3>
+                           <p>Harness SwiftUI and MapKit for compelling, location-aware apps. From map display to real-time user location and route navigation, learn expert skills.</p>
+                           <span>$129</span>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+            
+             
+             <!-- 
+             <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/machine-learning-in-ios-using-swift-and-create-ml">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                     <div class="story_img">
+                       <img src="images/machine-learning.png" alt="image" >
+                     </div>
+                     <div class="story_text">
+                           <h3>Machine Learning in iOS Using Create ML</h3>
+                           <p>Master machine learning in iOS using Create ML. From fundamentals to image detection, sentiment analysis, object detection, and more. Join now!</p>
+                           <span><span style = "font-size: large">$89 </span><s style = "font-size: small; color: gray">$149</s></span>
+                           <div style = "color: green; font-weight: bold; font-size: small">Save 40%</div>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+            -->
+
+            
+
+             <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/courses/azamsharp-pro-for-all-content/lectures/62552061">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                     <div class="story_img">
+                       <img src="images/reminders-app.png" alt="image" >
+                     </div>
+                     <div class="story_text">
+                           <h3>Build Apple Reminders Clone in SwiftUI</h3>
+                           <p>Unleash SwiftUI and Core Data skills by crafting an Apple Reminders app clone. From basics to advanced functionalities, build real-world applications.</p>
+
+                     </div>
+                 </div>
+                 </a>
+             </div>
+             
+             <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/courses/azamsharp-pro-for-all-content/lectures/61628670">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                     <div class="story_img">
+                       <img src="images/vibe-coding.png" alt="image" >
+                     </div>
+                     <div class="story_text">
+                           <h3>Vibe Coding for iOS Developers</h3>
+                           <p>AI is revolutionizing iOS development—boosting productivity, enhancing code quality, and enabling faster innovation. This course teaches you to integrate ChatGPT and Copilot into your workflow effectively.
+                    </p>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+           
+             <div class="col-md-4">
+              <a href = "https://azamsharp.teachable.com/p/swiftui-fundamentals-beginner-friendly-course">
+                 <div class="story_box" data-aos="fade-up" data-aos-duration="1500">
+                     <div class="story_img">
+                       <img src="images/swiftui-fundamentals.png" alt="image" >
+                     </div>
+                     <div class="story_text">
+                           <h3>SwiftUI Fundamentals - Beginner Friendly Course</h3>
+                           <p>Master SwiftUI basics, state management, and consuming JSON APIs for creating dynamic and efficient app interfaces.</p>
+                           <span>Free</span>
+                     </div>
+                 </div>
+                 </a>
+             </div>
+
+           
+
+           </div>
+           <!-- row end -->
+       </div>
+       <!-- container end -->
+     </section>
+     <!-- Story-Section-end -->
+
+     
+
+     
+   
+
+      <!-- FAQ-Section start -->
+      <section class="row_am faq_section">
+        <!-- container start -->
+        <div class="container">
+          <div class="section_title" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+            <!-- h2 -->
+            <h2><span>FAQ</span> - Frequently Asked Questions</h2>
+            <!-- p -->
+          
+          </div>
+          <!-- faq data -->
+          <div class="faq_panel">
+            <div class="accordion" id="accordionExample">
+              <div class="card" data-aos="fade-up" data-aos-duration="1500">
+                <div class="card-header" id="headingOne">
+                  <h2 class="mb-0">
+                    <button type="button" class="btn btn-link active" data-toggle="collapse" data-target="#collapseOne">
+                      <i class="icon_faq icofont-plus"></i></i>What prerequisites are needed to enroll in the course?</button>
+                  </h2>
+                </div>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                  <div class="card-body">
+                    <p> Our iOS courses cater to individuals with basic programming knowledge. Familiarity with programming concepts and Swift language basics would be beneficial, but we offer resources to help beginners catch up.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card" data-aos="fade-up" data-aos-duration="1500">
+                <div class="card-header" id="headingTwo">
+                  <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse"
+                      data-target="#collapseTwo"><i class="icon_faq icofont-plus"></i></i> How are the courses structured – are they self-paced or do they follow a fixed schedule?</button>
+                  </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                  <div class="card-body">
+                    <p>Our courses offer a flexible, self-paced learning environment. You can progress through the materials at your own speed and convenience, allowing for a customized learning experience.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card" data-aos="fade-up" data-aos-duration="1500">
+                <div class="card-header" id="headingThree">
+                  <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse"
+                      data-target="#collapseThree"><i class="icon_faq icofont-plus"></i></i>What kind of support or assistance is available to students during the course?</button>
+                  </h2>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                  <div class="card-body">
+                    <p>We provide continuous support through comments and live Q&A sessions. Instructors and teaching assistants are readily available to help clarify doubts and provide guidance.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card" data-aos="fade-up" data-aos-duration="1500">
+                <div class="card-header" id="headingFour">
+                  <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse"
+                      data-target="#collapseFour"><i class="icon_faq icofont-plus"></i></i>Are there any hands-on projects or practical applications included in the curriculum?</button>
+                  </h2>
+                </div>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                  <div class="card-body">
+                    <p>Absolutely! Our curriculum emphasizes practical learning. You'll engage in hands-on projects and real-world applications to reinforce theoretical concepts and gain practical experience.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- container end -->
+      </section>
+      <!-- FAQ-Section end -->
+
+      <center>
+        <h3 style = "margin-top: 20px;">Subscribe to Newsletter</h3>
+      <script async data-uid="1236ce5c82" src="https://azamsharp.ck.page/1236ce5c82/index.js"></script>
+      </center>
+     
+    <!-- Footer-Section start -->
+    <footer>
+        <div class="top_footer" id="contact">
+          	<!-- container start -->
+            <div class="container">
+              <!-- row start -->
+              <div class="row">
+              	  <!-- footer link 1 -->
+                  <div class="col-lg-4 col-md-6 col-12">
+                      <div class="abt_side">
+                        <h2 style = "color: white";> AzamSharp School </h2>
+                        <ul>
+                          <li><a href="#">azam@azamsharp.com</a></li>
+                        </ul>
+                        <ul class="social_media">
+                            <li><a href="https://www.facebook.com/mohammad.azam.92775"><i class="icofont-facebook"></i></a></li>
+                            <li><a href="https://twitter.com/azamsharp"><i class="icofont-twitter"></i></a></li>
+                        </ul>
+                      </div>
+                  </div>
+
+                  <!-- footer link 2 -->
+                  <div class="col-lg-3 col-md-6 col-12">
+                      <div class="links">
+                        <h3>Useful Links</h3>
+                          <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="#blog">Courses</a></li>
+                            <li><a href="https://azamsharp.teachable.com/p/tutorials">Tutorials</a></li>
+                            <li><a href="https://azamsharp.teachable.com/p/newsletter">Newsletter</a></li>
+                            <li><a href="https://azamsharp.teachable.com/p/affiliate">Become an Affiliate</a></li>
+                          </ul>
+                      </div>
+                  </div>
+
+                  <!-- footer link 3 -->
+                 
+
+                
+              </div>
+              <!-- row end -->
+          </div>
+          <!-- container end -->
+        </div>
+
+        <!-- last footer -->
+        <div class="bottom_footer">
+        	<!-- container start -->
+            <div class="container">
+              <!-- row start -->
+              <div class="row">
+                <div class="col-md-6">
+                    <p>© Copyrights 2024. All rights reserved.</p>
+                </div>
+            </div>
+            <!-- row end -->
+            </div>
+            <!-- container end -->
+        </div>
+
+        <!-- go top button -->
+        <div class="go_top">
+            <span><img src="images/go_top.png" alt="image" ></span>
+        </div>
+    </footer>
+    <!-- Footer-Section end -->
+
+  <!-- VIDEO MODAL -->
+  <div class="modal fade youtube-video" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <button id="close-video" type="button" class="button btn btn-default text-right" data-dismiss="modal">
+            <i class="icofont-close-line-circled"></i>
+          </button>
+            <div class="modal-body">
+                <div id="video-container" class="video-container">
+                    <iframe id="youtubevideo" src="" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+                </div>        
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div> 
+    </div>
+  </div>
+
+  <div class="purple_backdrop"></div>
+
+  </div>
+
+
+  <!-- Page-wrapper-End -->
+
+  <!-- Jquery-js-Link -->   
+  <script src="js/jquery.js"></script>
+  <!-- owl-js-Link -->
+  <script src="js/owl.carousel.min.js"></script>
+  <!-- bootstrap-js-Link -->
+
+  
+
+  <!-- aos-js-Link -->
+  <script src="js/aos.js"></script>
+  <!-- main-js-Link -->
+  <script src="js/main.js"></script>
+
+  <div class="free_text">
+  </div>
+
+
+<script>
+
+/*
+function closeBanner() {
+    let banner = document.getElementById("banner");
+    banner.style.opacity = "0";
+    setTimeout(() => {
+        banner.style.display = "none";
+    }, 500); // Hides after fade-out
+}
+
+    setTimeout(() => {
+        document.getElementById("banner").style.opacity = "0";
+    }, 10000); // Display for 5 seconds before fading out
+
+*/
+</script>
+
+
+  <script>
+    const body = document.body
+    const toastBody = document.getElementById('toastBody')
+
+    body.onload = () => {
+      console.log("body onload") 
+        const toastLiveExample = document.getElementById('liveToast')
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+        console.log(toastBootstrap)
+        // set the text for the toast 
+        toastBody.innerHTML = getRecentSales() 
+        toastBootstrap.show() 
+    }
+</script>
+
+<script src="js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src = "js/recentSales.js"></script>
+
+</body>
+
+</html>

@@ -1,467 +1,481 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Books — Mohammad Azam</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Practical SwiftUI and SwiftData books from AzamSharp School for developers building real-world iOS applications." />
+  <title>Books — AzamSharp School</title>
 
   <style>
-    :root{
-      --ink:#171f34;
-      --ink2:#263453;
-      --muted:rgba(23,31,52,0.72);
-      --muted2:rgba(23,31,52,0.55);
-      --mist:#f4f6fb;
-      --soft:rgba(23,31,52,0.08);
-      --line:rgba(23,31,52,0.14);
-      --ctaA:#6d8cff;
-      --ctaB:#8a6dff;
-      --ctaInk:#ffffff;
-      --radius:22px;
-      --max:1080px;
-      --font:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    :root {
+      --bg: #07101d;
+      --bg-soft: #0d1727;
+      --card: #101c2f;
+      --card-2: #14233a;
+      --text: #f7f9fc;
+      --muted: #a9b6ca;
+      --line: rgba(255,255,255,.09);
+      --accent: #6ea8fe;
+      --accent-2: #9b7cff;
+      --green: #5ee6a8;
+      --shadow: 0 24px 70px rgba(0,0,0,.28);
+      --radius: 22px;
+      --max: 1180px;
     }
 
-    *{ box-sizing:border-box; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-    body{
-      margin:0;
-      font-family:var(--font);
-      color:var(--ink);
-      background:var(--mist);
-      overflow-x:hidden;
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 85% 10%, rgba(110,168,254,.14), transparent 26rem),
+        radial-gradient(circle at 10% 24%, rgba(155,124,255,.10), transparent 28rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.55;
     }
 
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      opacity:0.23;
-      background-image:radial-gradient(rgba(23,31,52,0.06) 1px, transparent 1px);
-      background-size:14px 14px;
-      mix-blend-mode:multiply;
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container { width: min(calc(100% - 40px), var(--max)); margin: auto; }
+    .section { padding: 86px 0; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #c8d8f4;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 12px;
     }
 
-    .wrap{
-      width:min(var(--max), calc(100% - 40px));
-      margin:0 auto;
-      position:relative;
-      z-index:1;
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 2px;
+      background: var(--accent);
     }
 
-    header{
-      padding:24px 0 10px;
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(7,16,29,.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
     }
 
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
+    nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
     }
 
-    .brand{
-      display:flex;
-      flex-direction:column;
-      line-height:1.05;
-      text-decoration:none;
+    .brand {
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: -.04em;
     }
 
-    .brand strong{
-      font-size:14px;
-      letter-spacing:0.7px;
-      text-transform:uppercase;
-      color:var(--ink2);
+    .brand span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      color: #c6d0df;
+      font-size: 14px;
+      font-weight: 700;
     }
 
-    .brand span{
-      font-size:12px;
-      color:var(--muted2);
-      margin-top:6px;
+    .nav-links a:hover { color: white; }
+
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
     }
 
-    .navlinks{
-      display:flex;
-      gap:8px;
-      align-items:center;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 12px;
+      font-weight: 850;
+      border: 1px solid transparent;
+      transition: .2s ease;
+      cursor: pointer;
     }
 
-    .navlinks a{
-      color:var(--muted);
-      font-size:13px;
-      text-decoration:none;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid transparent;
-      transition:160ms ease;
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #06101e;
     }
 
-    .navlinks a:hover{
-      border-color:var(--soft);
-      background:rgba(255,255,255,0.64);
+    .btn-secondary {
+      border-color: var(--line);
+      background: rgba(255,255,255,.04);
+      color: white;
     }
 
-    .hero{
-      padding:58px 0 34px;
-      text-align:center;
+    .hero {
+      padding: 94px 0 54px;
+      text-align: center;
     }
 
-    .kicker{
-      color:var(--muted2);
-      font-size:12px;
-      letter-spacing:0.4px;
-      text-transform:uppercase;
-      font-weight:700;
-      margin-bottom:14px;
+    .hero h1 {
+      max-width: 900px;
+      margin: 16px auto 22px;
+      font-size: clamp(50px, 7vw, 78px);
+      line-height: .98;
+      letter-spacing: -.055em;
     }
 
-    h1{
-      margin:0 auto 14px;
-      max-width:850px;
-      font-size:clamp(38px, 5vw, 64px);
-      letter-spacing:-1.5px;
-      line-height:1.02;
+    .hero h1 span {
+      background: linear-gradient(90deg, #fff 20%, #87b7ff 60%, #b89dff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    .hero p{
-      margin:0 auto;
-      max-width:680px;
-      color:var(--muted);
-      font-size:16px;
-      line-height:1.7;
+    .hero p {
+      max-width: 730px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 18px;
     }
 
-    .book-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:22px;
-      padding:24px 0 44px;
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
     }
 
-    .book-card{
-      border:1px solid var(--soft);
-      background:rgba(255,255,255,0.72);
-      border-radius:var(--radius);
-      padding:24px;
-      display:grid;
-      grid-template-columns:0.9fr 1.1fr;
-      gap:22px;
-      align-items:center;
-      box-shadow:0 24px 70px rgba(23,31,52,0.06);
+    .book-card {
+      display: grid;
+      grid-template-columns: .84fr 1.16fr;
+      gap: 28px;
+      align-items: center;
+      padding: 28px;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(20,35,58,.94), rgba(13,23,39,.94));
+      box-shadow: var(--shadow);
+      transition: .22s ease;
     }
 
-    .book-cover{
-      width:100%;
-      border-radius:18px;
-      overflow:hidden;
+    .book-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(110,168,254,.42);
     }
 
-    .book-cover img{
-      width:100%;
-      display:block;
-      object-fit:contain;
+    .book-cover {
+      border-radius: 18px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(110,168,254,.18), transparent 36%),
+        rgba(255,255,255,.025);
+      padding: 18px;
+      min-height: 360px;
+      display: grid;
+      place-items: center;
     }
 
-    .book-content h2{
-      margin:0 0 8px;
-      font-size:26px;
-      letter-spacing:-0.6px;
-      line-height:1.1;
-      color:var(--ink);
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      max-height: 330px;
+      object-fit: contain;
     }
 
-    .subtitle{
-      margin:0 0 12px;
-      font-size:14px;
-      color:var(--ink2);
-      font-weight:700;
-      line-height:1.5;
+    .book-content h2 {
+      margin: 10px 0 8px;
+      font-size: 32px;
+      letter-spacing: -.04em;
+      line-height: 1.05;
     }
 
-    .desc{
-      margin:0 0 18px;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.7;
+    .subtitle {
+      color: #d6e3f4;
+      font-weight: 750;
+      font-size: 14px;
+      margin: 0 0 14px;
     }
 
-    .meta{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-bottom:18px;
+    .desc {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 22px;
     }
 
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid var(--soft);
-      background:rgba(255,255,255,0.72);
-      color:var(--muted);
-      font-size:12px;
-      font-weight:650;
+    .book-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
     }
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:13px 18px;
-      border-radius:999px;
-      text-decoration:none;
-      color:var(--ctaInk);
-      font-weight:760;
-      font-size:14px;
-      letter-spacing:0.25px;
-      background:linear-gradient(135deg, var(--ctaA), var(--ctaB));
-      border:1px solid rgba(70,87,190,0.28);
-      box-shadow:0 18px 42px rgba(82,96,210,0.20), inset 0 1px 0 rgba(255,255,255,0.42);
-      transition:160ms ease;
+    .tag {
+      padding: 6px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: #c8d4e3;
+      font-size: 11px;
+      font-weight: 800;
     }
 
-    .btn:hover{
-      transform:translateY(-1px);
-      box-shadow:0 22px 52px rgba(82,96,210,0.28), inset 0 1px 0 rgba(255,255,255,0.52);
+    .compare {
+      margin-top: 28px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: rgba(255,255,255,.025);
+      overflow: hidden;
     }
 
-    .compare{
-      padding:8px 0 42px;
+    .compare-head {
+      padding: 30px 30px 14px;
     }
 
-    .compare-box{
-      border:1px solid var(--soft);
-      background:rgba(255,255,255,0.66);
-      border-radius:var(--radius);
-      padding:22px;
+    .compare h2 {
+      margin: 8px 0 10px;
+      font-size: 34px;
+      letter-spacing: -.04em;
     }
 
-    .compare h2{
-      margin:0 0 10px;
-      font-size:20px;
-      letter-spacing:-0.4px;
+    .compare p {
+      color: var(--muted);
+      max-width: 800px;
+      margin: 0;
     }
 
-    .compare p{
-      margin:0 0 18px;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.7;
-      max-width:82ch;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
     }
 
-    table{
-      width:100%;
-      border-collapse:collapse;
-      overflow:hidden;
-      border-radius:16px;
-      font-size:14px;
+    th, td {
+      padding: 18px 22px;
+      text-align: left;
+      vertical-align: top;
+      border-top: 1px solid var(--line);
     }
 
-    th,td{
-      text-align:left;
-      padding:14px;
-      border-bottom:1px solid var(--soft);
-      vertical-align:top;
+    th {
+      color: #dbe7f5;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      background: rgba(255,255,255,.025);
     }
 
-    th{
-      color:var(--ink2);
-      background:rgba(255,255,255,0.68);
-      font-size:13px;
-      text-transform:uppercase;
-      letter-spacing:0.35px;
+    td {
+      color: var(--muted);
+      font-size: 14px;
     }
 
-    td{
-      color:var(--muted);
-      line-height:1.6;
+    td strong { color: white; }
+
+    .membership-callout {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 30px;
+      padding: 34px;
+      border-radius: 24px;
+      border: 1px solid rgba(110,168,254,.24);
+      background:
+        radial-gradient(circle at 80% 10%, rgba(155,124,255,.18), transparent 20rem),
+        linear-gradient(135deg, #0f1f37, #111a2d);
     }
 
-    tr:last-child td{
-      border-bottom:none;
+    .membership-callout h3 {
+      margin: 8px 0 8px;
+      font-size: 30px;
+      letter-spacing: -.04em;
     }
 
-    footer{
-      padding:28px 0 40px;
-      color:var(--muted2);
-      font-size:12px;
+    .membership-callout p {
+      margin: 0;
+      color: var(--muted);
     }
 
-    .foot{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-      border-top:1px solid var(--soft);
-      padding-top:16px;
+    footer {
+      padding: 54px 0 30px;
+      border-top: 1px solid var(--line);
+      margin-top: 80px;
     }
 
-    .foot a{
-      color:var(--ink2);
-      text-decoration:none;
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: 30px;
     }
 
-    @media (max-width: 980px){
-      .book-grid{
-        grid-template-columns:1fr;
+    footer h4 { margin: 0 0 14px; }
+    footer a, footer p { color: var(--muted); font-size: 13px; }
+    footer a { display: block; margin: 8px 0; }
+
+    .copyright {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      color: #718096;
+      font-size: 12px;
+    }
+
+    @media (max-width: 1000px) {
+      .book-grid { grid-template-columns: 1fr; }
+      .book-card { grid-template-columns: .7fr 1.3fr; }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 700px) {
+      .container { width: min(calc(100% - 28px), var(--max)); }
+      .hero { padding-top: 66px; }
+      .hero h1 { font-size: 48px; }
+      .book-card { grid-template-columns: 1fr; padding: 22px; }
+      .book-cover { min-height: auto; }
+      .book-cover img { max-height: 360px; }
+      .membership-callout { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+
+      table, thead, tbody, th, td, tr { display: block; }
+      thead { display: none; }
+      tr { border-top: 1px solid var(--line); }
+      td { border: 0; padding: 8px 22px; }
+      td:first-child { padding-top: 18px; }
+      td:last-child { padding-bottom: 18px; }
+      td::before {
+        content: attr(data-label);
+        display: block;
+        color: #dbe7f5;
+        font-size: 11px;
+        font-weight: 850;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+        margin-bottom: 4px;
       }
-
-      .book-card{
-        grid-template-columns:0.75fr 1.25fr;
-      }
     }
 
-    @media (max-width: 680px){
-      .wrap{
-        width:min(var(--max), calc(100% - 28px));
-      }
-
-      header{
-        padding-top:18px;
-      }
-
-      .nav{
-        align-items:flex-start;
-        flex-direction:column;
-      }
-
-      .hero{
-        padding:42px 0 22px;
-        text-align:left;
-      }
-
-      .hero p{
-        margin-left:0;
-      }
-
-      .book-card{
-        grid-template-columns:1fr;
-        padding:20px;
-      }
-
-      .book-cover{
-        max-width:260px;
-        margin:0 auto;
-      }
-
-      h1{
-        font-size:42px;
-      }
-
-      table, thead, tbody, th, td, tr{
-        display:block;
-      }
-
-      thead{
-        display:none;
-      }
-
-      tr{
-        border-bottom:1px solid var(--soft);
-        padding:12px 0;
-      }
-
-      tr:last-child{
-        border-bottom:none;
-      }
-
-      td{
-        border-bottom:none;
-        padding:6px 0;
-      }
-
-      td::before{
-        content:attr(data-label);
-        display:block;
-        color:var(--ink2);
-        font-weight:750;
-        margin-bottom:2px;
-      }
+    @media (max-width: 520px) {
+      .nav-actions .btn-secondary { display: none; }
+      .footer-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <header>
-      <nav class="nav">
-        <a class="brand" href="/">
-          <strong>Mohammad Azam</strong>
-          <span>Books for Swift Developers</span>
-        </a>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="index.html">Azam<span>Sharp</span></a>
 
-        <div class="navlinks">
-          <a href="/">Home</a>
-          <a href="/books.html">Books</a>
-          <a href="https://azamsharp.school" target="_blank" rel="noreferrer">AzamSharp School</a>
+        <div class="nav-links">
+          <a href="index.html#courses">Courses</a>
+          <a href="books.html">Books</a>
+          <a href="workshops.html">Workshops</a>
+          <a href="index.html#membership">Membership</a>
+          <a href="index.html#about">About</a>
+        </div>
+
+        <div class="nav-actions">
+          <a class="btn btn-secondary" href="https://azamsharp.teachable.com/">Sign In</a>
+          <a class="btn btn-primary" href="index.html#membership">Join AzamSharp</a>
         </div>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <main>
-      <section class="hero">
-        <div class="kicker">Books</div>
-        <h1>Books for Developers Who Want to Build Real Applications.</h1>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">AzamSharp Books</span>
+        <h1>Books for developers who want to <span>build real applications.</span></h1>
         <p>
           Practical books for Swift and SwiftUI developers who want to move beyond tutorials
           and build applications that are easier to understand, maintain, and evolve.
         </p>
-      </section>
+      </div>
+    </section>
 
-      <section class="book-grid" aria-label="Books">
-        <article class="book-card">
-          <div class="book-cover">
-            <img src="/images/swiftui-architecture-3d-cover.png" alt="SwiftUI Architecture book cover">
-          </div>
+    <section class="section" style="padding-top: 28px;">
+      <div class="container">
+        <div class="book-grid">
+          <article class="book-card">
+            <div class="book-cover">
+              <img src="/images/swiftui-architecture-3d-cover.png" alt="SwiftUI Architecture book cover">
+            </div>
 
-          <div class="book-content">
-            <h2>SwiftUI Architecture</h2>
-            <p class="subtitle">Patterns and Practices for Building Scalable Applications</p>
-            <p class="desc">
-              Learn practical SwiftUI architecture patterns for state management, navigation,
-              dependency management, testing, communication between features, and building
-              applications that can grow beyond simple demos.
+            <div class="book-content">
+              <span class="eyebrow">SwiftUI</span>
+              <h2>SwiftUI Architecture</h2>
+              <p class="subtitle">Patterns and Practices for Building Scalable Applications</p>
+              <p class="desc">
+                Learn practical SwiftUI architecture patterns for state management, navigation,
+                dependency management, testing, communication between features, and building
+                applications that can grow beyond simple demos.
+              </p>
+
+              <div class="book-tags">
+                <span class="tag">Architecture</span>
+                <span class="tag">State Management</span>
+                <span class="tag">Testing</span>
+              </div>
+
+              <a class="btn btn-primary" href="swiftui-architecture-book.html">View Book →</a>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="book-cover">
+              <img src="/images/swiftdata-3d-cover.png" alt="SwiftData Architecture book cover">
+            </div>
+
+            <div class="book-content">
+              <span class="eyebrow">SwiftData</span>
+              <h2>SwiftData Architecture</h2>
+              <p class="subtitle">Patterns and Practices for Building Scalable Applications</p>
+              <p class="desc">
+                Learn how SwiftData works in real applications, including relationships, queries,
+                migrations, CloudKit, testing, debugging, background processing, custom stores,
+                UIKit integration, and performance optimization.
+              </p>
+
+              <div class="book-tags">
+                <span class="tag">Persistence</span>
+                <span class="tag">CloudKit</span>
+                <span class="tag">Performance</span>
+              </div>
+
+              <a class="btn btn-primary" href="swiftdata-architecture.html">View Book →</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="compare">
+          <div class="compare-head">
+            <span class="eyebrow">Choose your book</span>
+            <h2>Which book should you read?</h2>
+            <p>
+              Both books focus on building real-world Swift applications, but they solve different
+              problems. SwiftUI Architecture focuses on application structure. SwiftData Architecture
+              focuses on persistence and data-driven applications.
             </p>
-
-            
-            <a class="btn" href="swiftui-architecture-book.html" target="_self">
-              View Book
-            </a>
           </div>
-        </article>
-
-        <article class="book-card">
-          <div class="book-cover">
-            <img src="/images/swiftdata-3d-cover.png" alt="SwiftData Architecture book cover">
-          </div>
-
-          <div class="book-content">
-            <h2>SwiftData Architecture</h2>
-            <p class="subtitle">Patterns and Practices for Building Scalable Applications</p>
-            <p class="desc">
-              Learn how SwiftData works in real applications, including relationships, queries,
-              migrations, CloudKit, testing, debugging, background processing, custom stores,
-              UIKit integration, and performance optimization.
-            </p>
-            
-            <a class="btn" href="swiftdata-architecture.html" target="_self">
-              View Book
-            </a>
-          </div>
-        </article>
-      </section>
-
-      <section class="compare">
-        <div class="compare-box">
-          <h2>Which book should you read?</h2>
-          <p>
-            Both books focus on building real-world Swift applications, but they solve different
-            problems. SwiftUI Architecture focuses on application structure. SwiftData Architecture
-            focuses on persistence and data-driven applications.
-          </p>
 
           <table>
             <thead>
@@ -498,23 +512,54 @@
             </tbody>
           </table>
         </div>
-      </section>
-    </main>
 
-    <footer>
-      <div class="foot">
-        <div>© <span id="y"></span> Mohammad Azam</div>
-        <div>
-          <a href="https://azamsharp.school" target="_blank" rel="noreferrer">
-            azamsharp.school
-          </a>
+        <div class="membership-callout">
+          <div>
+            <span class="eyebrow">AzamSharp Membership</span>
+            <h3>Get the books as part of your membership.</h3>
+            <p>
+              AzamSharp members get access to digital books along with the complete course library,
+              workshops, office hours, and new member content.
+            </p>
+          </div>
+          <a class="btn btn-primary" href="index.html#membership">View Membership →</a>
         </div>
       </div>
-    </footer>
-  </div>
+    </section>
+  </main>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html">Azam<span>Sharp</span></a>
+          <p>Practical courses and books for modern iOS and AI developers.</p>
+        </div>
+
+        <div>
+          <h4>Learn</h4>
+          <a href="index.html#courses">Courses</a>
+          <a href="books.html">Books</a>
+          <a href="workshops.html">Workshops</a>
+          <a href="index.html#membership">Membership</a>
+        </div>
+
+        <div>
+          <h4>School</h4>
+          <a href="index.html#about">About Azam</a>
+          <a href="https://azamsharp.teachable.com/p/tutorials">Tutorials</a>
+          <a href="https://azamsharp.teachable.com/p/newsletter">Newsletter</a>
+        </div>
+
+        <div>
+          <h4>Connect</h4>
+          <a href="https://twitter.com/azamsharp">X / Twitter</a>
+          <a href="mailto:azam@azamsharp.com">azam@azamsharp.com</a>
+        </div>
+      </div>
+
+      <div class="copyright">© 2026 AzamSharp School. All rights reserved.</div>
+    </div>
+  </footer>
 </body>
 </html>
