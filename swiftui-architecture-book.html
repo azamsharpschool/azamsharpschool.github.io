@@ -127,6 +127,7 @@
       pointer-events:none;
       opacity: 0.92;
       filter: saturate(1.06);
+      display: none;
     }
 
     header{ padding: 22px 0 10px; }
@@ -500,6 +501,118 @@ Not sure yet?
     Download a free chapter
   </a>
 </p>
+
+<!-- AI CODING FILES - INCLUDED WITH EBOOK -->
+
+<style>
+  .ai-bonus {
+    width: 100%;
+    margin-top: 18px;
+    padding: 18px 20px;
+
+    border: 1px solid rgba(31,42,68,0.14);
+    border-radius: 16px;
+
+    background: linear-gradient(
+      135deg,
+      rgba(255,255,255,0.92),
+      rgba(143,214,255,0.22)
+    );
+
+    box-shadow: 0 14px 32px rgba(31,42,68,0.08);
+  }
+
+  .ai-bonus-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: rgba(31,42,68,0.55);
+    margin-bottom: 7px;
+  }
+
+  .ai-bonus-title {
+    font-size: 18px;
+    font-weight: 750;
+    color: #1f2a44;
+    margin-bottom: 13px;
+  }
+
+  .ai-bonus-items {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .ai-bonus-item {
+    flex: 1;
+    padding: 11px 14px;
+
+    border-radius: 12px;
+    border: 1px solid rgba(31,42,68,0.08);
+    background: rgba(255,255,255,0.82);
+  }
+
+  .ai-bonus-item strong {
+    display: block;
+    font-size: 13px;
+    color: #2b3a5a;
+  }
+
+  .ai-bonus-item span {
+    display: block;
+    margin-top: 4px;
+
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 13px;
+    font-weight: 650;
+    color: rgba(31,42,68,0.72);
+  }
+
+  .ai-bonus p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(31,42,68,0.72);
+  }
+
+  @media (max-width: 600px) {
+    .ai-bonus-items {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<div class="ai-bonus">
+
+  <div class="ai-bonus-label">
+    INCLUDED WITH THE EBOOK
+  </div>
+
+  <div class="ai-bonus-title">
+    AI Coding Assistant Files
+  </div>
+
+  <div class="ai-bonus-items">
+
+    <div class="ai-bonus-item">
+      <strong>OpenAI Codex</strong>
+      <span>AGENTS.md</span>
+    </div>
+
+    <div class="ai-bonus-item">
+      <strong>Claude Code</strong>
+      <span>SKILLS.md</span>
+    </div>
+
+  </div>
+
+  <p>
+    Your ebook download includes ready-to-use Codex and Claude Code
+    instruction files based on the architecture principles taught in
+    SwiftUI Architecture.
+  </p>
+
+</div>
 
 <!-- Book Details (drop this anywhere after the Chapters section, I recommend placing it right before #details) -->
 <section class="section" style="padding-bottom: 40px;" id="book-details">
