@@ -1,28 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HTCH78K3CD"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag("js", new Date());
-    gtag("config", "G-HTCH78K3CD");
-  </script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta
-    name="description"
-    content="Hands-on iOS workshops from AzamSharp School covering Foundation Models, SwiftUI, SwiftData, AI, and modern Apple development."
-  >
-
-  <title>Workshops — AzamSharp School</title>
+  <meta name="description" content="Join live AzamSharp workshops to build AI-powered iOS applications and AI agents using SwiftUI and Apple Foundation Models.">
+  <title>Live Workshops | AzamSharp School</title>
 
   <style>
     :root {
@@ -30,654 +13,322 @@
       --bg-soft: #0d1727;
       --card: #101c2f;
       --card-2: #14233a;
-
       --text: #f7f9fc;
       --muted: #a9b6ca;
-
-      --line: rgba(255, 255, 255, 0.09);
-
+      --line: rgba(255,255,255,.09);
       --accent: #6ea8fe;
       --accent-2: #9b7cff;
       --green: #5ee6a8;
-
-      --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
-
-      --radius: 22px;
+      --shadow: 0 24px 70px rgba(0,0,0,.28);
       --max: 1180px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-
-      font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
+      font-family: Inter, ui-sans-serif, system-ui,
+        -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
       background:
-        radial-gradient(
-          circle at 85% 10%,
-          rgba(110, 168, 254, 0.14),
-          transparent 26rem
-        ),
-        radial-gradient(
-          circle at 10% 24%,
-          rgba(155, 124, 255, 0.10),
-          transparent 28rem
-        ),
+        radial-gradient(circle at 85% 10%,
+          rgba(110,168,254,.14), transparent 26rem),
+        radial-gradient(circle at 10% 24%,
+          rgba(155,124,255,.10), transparent 28rem),
         var(--bg);
-
       color: var(--text);
-
       line-height: 1.55;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .container {
       width: min(calc(100% - 40px), var(--max));
       margin: auto;
     }
 
-    .section {
-      padding: 86px 0;
-    }
+    .section { padding: 80px 0; }
 
     .eyebrow {
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 8px;
-
+      display: inline-block;
       color: #c8d8f4;
-
-      font-weight: 800;
-
-      letter-spacing: 0.08em;
-
-      text-transform: uppercase;
-
       font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
     }
 
     .eyebrow::before {
       content: "";
-
+      display: inline-block;
       width: 22px;
       height: 2px;
-
+      margin-right: 8px;
+      vertical-align: middle;
       background: var(--accent);
     }
 
-    /* HEADER */
+    /* Navigation */
 
     header {
       position: sticky;
-
       top: 0;
-
       z-index: 50;
-
-      background: rgba(7, 16, 29, 0.82);
-
+      background: rgba(7,16,29,.85);
       backdrop-filter: blur(18px);
-
       border-bottom: 1px solid var(--line);
     }
 
     nav {
-      height: 76px;
-
+      min-height: 76px;
       display: flex;
-
       align-items: center;
-
       justify-content: space-between;
-
-      gap: 28px;
+      gap: 24px;
     }
 
     .brand {
       font-size: 23px;
-
       font-weight: 900;
-
-      letter-spacing: -0.04em;
+      letter-spacing: -.04em;
+      white-space: nowrap;
     }
 
-    .brand span {
-      color: var(--accent);
-    }
+    .brand span { color: var(--accent); }
 
     .nav-links {
       display: flex;
-
-      gap: 26px;
-
+      gap: 24px;
       color: #c6d0df;
-
       font-size: 14px;
-
       font-weight: 700;
     }
 
-    .nav-links a:hover {
-      color: white;
-    }
+    .nav-links a:hover { color: white; }
 
-    .nav-actions {
-      display: flex;
-
-      gap: 10px;
-
-      align-items: center;
-    }
-
-    /* BUTTONS */
+    /* Buttons */
 
     .btn {
       display: inline-flex;
-
       align-items: center;
-
       justify-content: center;
-
-      gap: 9px;
-
       min-height: 46px;
-
-      padding: 0 18px;
-
+      padding: 0 20px;
       border-radius: 12px;
-
       font-weight: 850;
-
-      border: 1px solid transparent;
-
-      transition: 0.2s ease;
-
-      cursor: pointer;
+      transition: .2s ease;
+      text-align: center;
     }
 
-    .btn:hover {
-      transform: translateY(-1px);
-    }
+    .btn:hover { transform: translateY(-2px); }
 
     .btn-primary {
-      background:
-        linear-gradient(
-          135deg,
-          var(--accent),
-          var(--accent-2)
-        );
-
+      background: linear-gradient(
+        135deg, var(--accent), var(--accent-2)
+      );
       color: #06101e;
     }
 
     .btn-secondary {
-      border-color: var(--line);
-
-      background: rgba(255, 255, 255, 0.04);
-
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
       color: white;
     }
 
-    .btn-light {
-      background: white;
-
-      color: #07101d;
-    }
-
-    /* HERO */
+    /* Hero */
 
     .hero {
-      padding: 92px 0 60px;
-    }
-
-    .hero-grid {
-      display: grid;
-
-      grid-template-columns:
-        1.03fr
-        0.97fr;
-
-      gap: 60px;
-
-      align-items: center;
+      padding: 100px 0 80px;
+      text-align: center;
     }
 
     .hero h1 {
-      margin: 16px 0 22px;
-
-      font-size:
-        clamp(
-          50px,
-          7vw,
-          76px
-        );
-
-      line-height: 0.98;
-
-      letter-spacing: -0.055em;
+      max-width: 950px;
+      margin: 18px auto 24px;
+      font-size: clamp(44px, 7vw, 76px);
+      line-height: 1.02;
+      letter-spacing: -.055em;
     }
 
-    .hero h1 span {
-      background:
-        linear-gradient(
-          90deg,
-          #ffffff 20%,
-          #87b7ff 60%,
-          #b89dff
-        );
-
+    .gradient {
+      background: linear-gradient(
+        90deg, #fff 20%, #87b7ff 60%, #b89dff
+      );
       -webkit-background-clip: text;
-
       background-clip: text;
-
       color: transparent;
     }
 
     .hero-copy {
+      max-width: 720px;
+      margin: auto;
       color: var(--muted);
-
-      font-size: 18px;
-
-      max-width: 680px;
+      font-size: 19px;
     }
 
     .hero-actions {
       display: flex;
-
-      gap: 12px;
-
+      justify-content: center;
       flex-wrap: wrap;
-
-      margin-top: 28px;
+      gap: 12px;
+      margin-top: 30px;
     }
 
-    .hero-image {
-      border-radius: 28px;
-
-      overflow: hidden;
-
-      border:
-        1px solid
-        rgba(110, 168, 254, 0.24);
-
-      background: var(--card);
-
-      box-shadow: var(--shadow);
-    }
-
-    .hero-image img {
-      width: 100%;
-
-      aspect-ratio: 16 / 10;
-
-      object-fit: cover;
-    }
-
-    /* INFO STRIP */
+    /* Info strip */
 
     .trust-strip {
       border-block: 1px solid var(--line);
-
-      background: rgba(255, 255, 255, 0.02);
+      background: rgba(255,255,255,.02);
     }
 
     .trust-inner {
-      min-height: 74px;
-
+      min-height: 76px;
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
-      gap: 24px;
-
       flex-wrap: wrap;
-
-      color: #aeb9c9;
-
-      font-size: 13px;
-    }
-
-    /* WORKSHOP */
-
-    .workshop-card {
-      display: grid;
-
-      grid-template-columns:
-        1.12fr
-        0.88fr;
-
-      gap: 40px;
-
-      padding: 38px;
-
-      border-radius: 28px;
-
-      border: 1px solid var(--line);
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(20, 35, 58, 0.96),
-          rgba(10, 19, 33, 0.96)
-        );
-
-      box-shadow: var(--shadow);
-    }
-
-    .workshop-card h2 {
-      margin: 10px 0 12px;
-
-      font-size:
-        clamp(
-          36px,
-          5vw,
-          56px
-        );
-
-      line-height: 1.02;
-
-      letter-spacing: -0.05em;
-    }
-
-    .workshop-date {
-      display: inline-flex;
-
-      margin: 8px 0 20px;
-
-      padding: 8px 12px;
-
-      border:
-        1px solid
-        rgba(94, 230, 168, 0.18);
-
-      background:
-        rgba(94, 230, 168, 0.08);
-
-      border-radius: 999px;
-
-      color: #b8f6d8;
-
-      font-size: 13px;
-
-      font-weight: 850;
-    }
-
-    .workshop-copy p {
-      color: var(--muted);
-
-      font-size: 15px;
-    }
-
-    .price-box {
-      margin-top: 28px;
-
-      padding: 22px;
-
-      border-radius: 20px;
-
-      border:
-        1px solid
-        rgba(110, 168, 254, 0.24);
-
-      background:
-        rgba(7, 16, 29, 0.58);
-    }
-
-    .price {
-      font-size: 42px;
-
-      font-weight: 950;
-
-      letter-spacing: -0.05em;
-    }
-
-    .price-note {
-      margin: 3px 0 16px;
-
-      color: var(--muted);
-
-      font-size: 13px;
-    }
-
-    .member-note {
-      margin-top: 16px;
-
-      padding-top: 16px;
-
-      border-top: 1px solid var(--line);
-
-      color: var(--muted);
-
-      font-size: 13px;
-
-      line-height: 1.7;
-    }
-
-    .member-note strong {
-      color: white;
-    }
-
-    .member-note a {
-      color: #cfe0ff;
-
-      font-weight: 800;
-    }
-
-    /* VIDEO */
-
-    .video-card {
-      overflow: hidden;
-
-      border-radius: 22px;
-
-      border: 1px solid var(--line);
-
-      background:
-        rgba(255, 255, 255, 0.025);
-    }
-
-    .video-head {
-      padding: 20px 22px;
-    }
-
-    .video-head h3 {
-      margin: 5px 0 4px;
-
-      font-size: 23px;
-
-      letter-spacing: -0.03em;
-    }
-
-    .video-head p {
-      margin: 0;
-
-      color: var(--muted);
-
-      font-size: 13px;
-    }
-
-    .video-wrap {
-      position: relative;
-
-      padding-bottom: 56.25%;
-
-      height: 0;
-
-      overflow: hidden;
-    }
-
-    .video-wrap iframe {
-      position: absolute;
-
-      inset: 0;
-
-      width: 100%;
-
-      height: 100%;
-
-      border: 0;
-    }
-
-    /* SECTION HEAD */
-
-    .section-head {
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: end;
-
-      gap: 24px;
-
-      margin-bottom: 34px;
-    }
-
-    .section-head h2 {
-      margin: 8px 0 0;
-
-      font-size:
-        clamp(
-          32px,
-          4vw,
-          48px
-        );
-
-      line-height: 1.06;
-
-      letter-spacing: -0.035em;
-    }
-
-    /* TOPICS */
-
-    .topics-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
       gap: 18px;
-    }
-
-    .topic-card {
-      padding: 26px;
-
-      border-radius: 20px;
-
-      border: 1px solid var(--line);
-
-      background:
-        rgba(255, 255, 255, 0.025);
-    }
-
-    .topic-number {
-      display: grid;
-
-      place-items: center;
-
-      width: 42px;
-
-      height: 42px;
-
-      margin-bottom: 20px;
-
-      border-radius: 12px;
-
-      background:
-        rgba(110, 168, 254, 0.12);
-
-      color: #d8e8ff;
-
-      font-weight: 900;
-    }
-
-    .topic-card h3 {
-      margin: 0 0 8px;
-
-      font-size: 21px;
-
-      letter-spacing: -0.025em;
-    }
-
-    .topic-card p {
-      margin: 0;
-
-      color: var(--muted);
-
+      color: #c5d0df;
       font-size: 14px;
     }
 
-    /* MEMBERSHIP */
+    /* Section heading */
 
-    .member-cta {
-      display: grid;
+    .section-head { margin-bottom: 36px; }
 
-      grid-template-columns:
-        1fr
-        auto;
-
-      gap: 28px;
-
-      align-items: center;
-
-      padding: 36px;
-
-      border-radius: 26px;
-
-      border:
-        1px solid
-        rgba(110, 168, 254, 0.25);
-
-      background:
-        radial-gradient(
-          circle at 85% 10%,
-          rgba(155, 124, 255, 0.18),
-          transparent 22rem
-        ),
-        linear-gradient(
-          135deg,
-          #0f1f37,
-          #111a2d
-        );
+    .section-head h2 {
+      margin: 10px 0;
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -.04em;
     }
 
-    .member-cta h3 {
-      margin: 8px 0;
+    .section-head p {
+      max-width: 680px;
+      color: var(--muted);
+    }
 
-      font-size: 32px;
+    /* Workshop cards */
 
-      letter-spacing: -0.04em;
+    .workshop-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .workshop-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid rgba(110,168,254,.28);
+      border-radius: 26px;
+      background: linear-gradient(
+        145deg, rgba(20,35,58,.96),
+        rgba(10,19,33,.96)
+      );
+      transition: .2s ease;
+    }
+
+    .workshop-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(110,168,254,.55);
+      box-shadow: var(--shadow);
+    }
+
+    .workshop-content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 36px;
+    }
+
+    .workshop-date {
+      color: #87b7ff;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .07em;
+    }
+
+    .workshop-content h3 {
+      margin: 18px 0;
+      font-size: clamp(27px, 3vw, 36px);
+      line-height: 1.15;
+      letter-spacing: -.04em;
+    }
+
+    .workshop-content p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .workshop-topics {
+      margin: 12px 0 28px;
+      padding-left: 20px;
+      color: #d4deeb;
+      font-size: 14px;
+    }
+
+    .workshop-topics li { margin-bottom: 10px; }
+
+    .workshop-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: auto;
+      margin-bottom: 26px;
+    }
+
+    .workshop-meta span {
+      padding: 7px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #d4deeb;
+      font-size: 12px;
+    }
+
+    .workshop-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .workshop-price {
+      font-size: 40px;
+      font-weight: 950;
+      letter-spacing: -.05em;
+    }
+
+    /* Membership */
+
+    .member-cta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+      padding: 40px;
+      border: 1px solid rgba(110,168,254,.25);
+      border-radius: 26px;
+      background: linear-gradient(
+        135deg, #0f1f37, #111a2d
+      );
+    }
+
+    .member-cta h2 {
+      margin: 10px 0;
+      font-size: clamp(28px, 4vw, 38px);
+      letter-spacing: -.04em;
     }
 
     .member-cta p {
+      max-width: 650px;
       margin: 0;
-
       color: var(--muted);
     }
 
@@ -685,174 +336,92 @@
 
     .faq-list {
       display: grid;
-
       gap: 14px;
     }
 
     details {
+      padding: 0 22px;
       border: 1px solid var(--line);
-
       border-radius: 18px;
-
-      background:
-        rgba(255, 255, 255, 0.025);
-
-      padding: 0 20px;
+      background: rgba(255,255,255,.025);
     }
 
     summary {
-      cursor: pointer;
-
-      list-style: none;
-
       padding: 20px 0;
-
+      cursor: pointer;
       font-weight: 850;
-
       color: #e7eef8;
     }
 
-    summary::-webkit-details-marker {
-      display: none;
-    }
-
-    summary::after {
-      content: "+";
-
-      float: right;
-
-      color: var(--accent);
-
-      font-size: 20px;
-    }
-
-    details[open] summary::after {
-      content: "−";
-    }
-
     details p {
-      padding: 0 0 20px;
-
       margin: 0;
-
+      padding: 0 0 20px;
       color: var(--muted);
-
       font-size: 14px;
     }
 
-    /* FOOTER */
+    /* Footer */
 
     footer {
       padding: 54px 0 30px;
-
+      margin-top: 60px;
       border-top: 1px solid var(--line);
-
-      margin-top: 80px;
     }
 
     .footer-grid {
       display: grid;
-
-      grid-template-columns:
-        2fr
-        repeat(3, 1fr);
-
+      grid-template-columns: 2fr repeat(3, 1fr);
       gap: 30px;
     }
 
-    footer h4 {
-      margin: 0 0 14px;
-    }
+    footer h4 { margin: 0 0 14px; }
 
     footer a,
     footer p {
+      display: block;
       color: var(--muted);
-
       font-size: 13px;
     }
 
-    footer a {
-      display: block;
-
-      margin: 8px 0;
-    }
+    footer a { margin: 8px 0; }
 
     .copyright {
       margin-top: 40px;
-
       padding-top: 20px;
-
       border-top: 1px solid var(--line);
-
       color: #718096;
-
       font-size: 12px;
     }
 
-    /* RESPONSIVE */
+    /* Responsive */
 
     @media (max-width: 980px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero-grid,
-      .workshop-card {
-        grid-template-columns: 1fr;
-      }
+      .nav-links { display: none; }
 
       .footer-grid {
-        grid-template-columns:
-          1fr
-          1fr;
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    @media (max-width: 700px) {
-      .container {
-        width:
-          min(
-            calc(100% - 28px),
-            var(--max)
-          );
-      }
-
-      .section {
-        padding: 64px 0;
-      }
-
-      .hero {
-        padding-top: 64px;
-      }
-
-      .hero h1 {
-        font-size: 48px;
-      }
-
-      .topics-grid {
+    @media (max-width: 750px) {
+      .workshop-grid {
         grid-template-columns: 1fr;
       }
 
-      .workshop-card {
-        padding: 24px;
-      }
+      .hero { padding: 70px 0; }
+
+      .section { padding: 60px 0; }
+
+      .workshop-content { padding: 28px 22px; }
 
       .member-cta {
-        grid-template-columns: 1fr;
-      }
-
-      .section-head {
-        align-items: flex-start;
-
         flex-direction: column;
+        align-items: flex-start;
+        padding: 28px;
       }
 
       .footer-grid {
         grid-template-columns: 1fr;
-      }
-
-      .nav-actions .btn-secondary {
-        display: none;
       }
     }
   </style>
@@ -860,691 +429,418 @@
 
 <body>
 
+  <!-- Navigation -->
+
   <header>
     <div class="container">
       <nav>
-
-        <a
-          class="brand"
-          href="index.html"
-        >
+        <a class="brand" href="index.html">
           Azam<span>Sharp</span>
         </a>
 
         <div class="nav-links">
-          <a href="index.html#courses">
-            Courses
-          </a>
-
-          <a href="books.html">
-            Books
-          </a>
-
+          <a href="index.html#courses">Courses</a>
+          <a href="books.html">Books</a>
           <a href="https://azamsharp.teachable.com/p/1-on-1-coaching">1-on-1 Coaching</a>
-
-          <a href="workshops.html">
-            Workshops
-          </a>
-
-          <a href="index.html#membership">
-            Membership
-          </a>
-
-          <a href="index.html#about">
-            About
-          </a>
+          <a href="workshops.html">Workshops</a>
+          <a href="index.html#membership">Membership</a>
+          <a href="index.html#about">About</a>
         </div>
 
-        <div class="nav-actions">
-
-          <a
-            class="btn btn-secondary"
-            href="https://azamsharp.teachable.com/"
-          >
-            Sign In
-          </a>
-
-          <a
-            class="btn btn-primary"
-            href="index.html#membership"
-          >
-            Join AzamSharp
-          </a>
-
-        </div>
-
+        <a class="btn btn-primary"
+           href="index.html#membership">
+          Join AzamSharp
+        </a>
       </nav>
     </div>
   </header>
 
-
   <main>
 
-    <!-- HERO -->
+    <!-- Hero -->
 
     <section class="hero">
+      <div class="container">
+        <span class="eyebrow">
+          Live, Hands-On Learning
+        </span>
 
-      <div class="container hero-grid">
+        <h1>
+          Build Real AI Apps.
+          <span class="gradient">Learn Together.</span>
+        </h1>
 
-        <div>
+        <p class="hero-copy">
+          Join me for live coding workshops where we build
+          real iOS applications using SwiftUI and Apple's
+          Foundation Models. Ask questions, follow along,
+          and learn techniques you can use in your own apps.
+        </p>
 
-          <span class="eyebrow">
-            Live, hands-on learning
-          </span>
+        <div class="hero-actions">
+          <a class="btn btn-primary"
+             href="#upcoming-workshops">
+            Explore Workshops &rarr;
+          </a>
 
-          <h1>
-            Build alongside me in
-            <span>AzamSharp Workshops.</span>
-          </h1>
-
-          <p class="hero-copy">
-            Practical workshops for iOS developers who want to
-            learn by building. Follow along with live coding,
-            ask questions, and leave with techniques you can
-            apply directly to your own apps.
-          </p>
-
-          <div class="hero-actions">
-
-            <a
-              class="btn btn-primary"
-              href="#foundation-models-workshop"
-            >
-              View Workshop →
-            </a>
-
-            <a
-              class="btn btn-secondary"
-              href="index.html#membership"
-            >
-              Membership Includes Workshops
-            </a>
-
-          </div>
-
+          <a class="btn btn-secondary"
+             href="index.html#membership">
+            Explore Membership
+          </a>
         </div>
-
-
-        <div class="hero-image">
-
-          <img
-            src="images/foundation-models-workshop.png"
-            alt="Foundation Models Workshop"
-          >
-
-        </div>
-
       </div>
-
     </section>
 
-
-    <!-- WORKSHOP INFO -->
+    <!-- Workshop Benefits -->
 
     <div class="trust-strip">
-
       <div class="container trust-inner">
-
-        <strong>Hands-on format</strong>
-
+        <span>Live Coding</span>
         <span>•</span>
-
-        <span>Live coding</span>
-
+        <span>Real Projects</span>
         <span>•</span>
-
-        <span>Practical projects</span>
-
+        <span>Zoom Sessions</span>
         <span>•</span>
-
-        <span>Zoom sessions</span>
-
+        <span>Source Code Included</span>
         <span>•</span>
-
-        <span>Included for AzamSharp members</span>
-
+        <span>Interactive Q&A</span>
       </div>
-
     </div>
 
+    <!-- Upcoming Workshops -->
 
-    <!-- FEATURED WORKSHOP -->
-
-    <section
-      class="section"
-      id="foundation-models-workshop"
-    >
-
-      <div class="container">
-
-        <div class="workshop-card">
-
-
-          <div class="workshop-copy">
-
-            <span class="eyebrow">
-              Featured workshop
-            </span>
-
-            <h2>
-              Building AI Applications
-              with Foundation Models
-            </h2>
-
-            <div class="workshop-date">
-              July 11, 2026 •
-              11:00 AM – 2:00 PM CST
-            </div>
-
-
-            <p>
-              Apple's Foundation Models framework makes it easy
-              to integrate on-device AI into your iOS
-              applications.
-            </p>
-
-            <p>
-              In this hands-on workshop, you'll learn how to
-              build intelligent features using the latest
-              Foundation Models APIs introduced by Apple.
-            </p>
-
-            <p>
-              We'll start by generating structured responses
-              using
-              <strong>@Generable</strong>
-              models, then explore how to extend your AI
-              assistant with custom tools.
-            </p>
-
-            <p>
-              You'll integrate Foundation Models into a real
-              SwiftUI application and learn practical
-              techniques for persisting AI-generated content
-              using SwiftData.
-            </p>
-
-            <p>
-              Whether you're just getting started with
-              Foundation Models or looking to build
-              production-ready AI experiences, this workshop
-              provides practical examples you can immediately
-              apply.
-            </p>
-
-
-            <div class="price-box">
-
-              <div class="price">
-                $149
-              </div>
-
-              <div class="price-note">
-                One-time workshop registration
-              </div>
-
-
-              <a
-                class="btn btn-primary"
-                href="https://azamsharp.teachable.com/purchase?product_id=6790444"
-              >
-                Reserve Your Spot →
-              </a>
-
-
-              <div class="member-note">
-
-                <strong>
-                  Already a Monthly or Annual member?
-                </strong>
-
-                <br>
-
-                Attend this workshop at no additional cost.
-
-                <a
-                  href="https://azamsharp.teachable.com/courses/azamsharp-pro-for-all-content/lectures/66144430"
-                >
-                  Access the workshop →
-                </a>
-
-                <br><br>
-
-                <strong>
-                  Not a member yet?
-                </strong>
-
-                <br>
-
-                Join AzamSharp School and workshops are
-                included with your membership.
-
-                <a href="index.html#membership">
-                  View membership →
-                </a>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <!-- VIDEO -->
-
-          <div>
-
-            <div class="video-card">
-
-              <div class="video-head">
-
-                <span class="eyebrow">
-                  Workshop preview
-                </span>
-
-                <h3>
-                  See what you'll build
-                </h3>
-
-                <p>
-                  Watch a short preview of the AI-powered
-                  application you'll build during the workshop.
-                </p>
-
-              </div>
-
-
-              <div class="video-wrap">
-
-                <iframe
-                  src="https://www.youtube.com/embed/bkyfu-cW2Z8"
-                  title="Foundation Models Workshop Preview"
-                  allowfullscreen
-                >
-                </iframe>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- TOPICS -->
-
-    <section
-      class="section"
-      style="padding-top:20px;"
-    >
-
+    <section class="section" id="upcoming-workshops">
       <div class="container">
 
         <div class="section-head">
+          <span class="eyebrow">
+            December 2026
+          </span>
 
-          <div>
+          <h2>Upcoming Live Workshops</h2>
 
-            <span class="eyebrow">
-              What you'll learn
-            </span>
+          <p>
+            Two hands-on workshops designed to help
+            iOS developers build intelligent applications
+            using Apple's on-device AI.
+          </p>
+        </div>
 
-            <h2>
-              Build a complete
-              AI-powered workflow.
-            </h2>
+        <div class="workshop-grid">
 
+          <!-- Workshop 1 -->
+
+          <article class="workshop-card">
+            <div class="workshop-content">
+
+              <span class="workshop-date">
+                FRIDAY, DECEMBER 4 • 11 AM – 1 PM CT
+              </span>
+
+              <h3>
+                Build Your First AI-Powered iOS App
+              </h3>
+
+              <p>
+                Build an intelligent recipe recommendation
+                application using SwiftUI and Apple's
+                Foundation Models framework.
+              </p>
+
+              <p>
+                Select ingredients, generate structured
+                recipes, and learn how to integrate
+                on-device AI into a real application.
+              </p>
+
+              <ul class="workshop-topics">
+                <li>Getting started with LanguageModelSession</li>
+                <li>Structured generation using @Generable</li>
+                <li>Controlling output with @Guide</li>
+                <li>Streaming AI-generated responses</li>
+                <li>Model availability and error handling</li>
+                <li>Building the complete SwiftUI interface</li>
+              </ul>
+
+              <div class="workshop-meta">
+                <span>2 Hours</span>
+                <span>Beginner Friendly</span>
+                <span>Source Code Included</span>
+              </div>
+
+              <div class="workshop-footer">
+                <div class="workshop-price">$50</div>
+
+                <a class="btn btn-primary"
+                   href="https://luma.com/q7rhg7ka"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                  Register Now &rarr;
+                </a>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- Workshop 2 -->
+
+          <article class="workshop-card">
+            <div class="workshop-content">
+
+              <span class="workshop-date">
+                FRIDAY, DECEMBER 11 • 11 AM – 2 PM CT
+              </span>
+
+              <h3>
+                Build Your Own AI Travel Agent
+              </h3>
+
+              <p>
+                Go beyond simple chatbots and build
+                an AI travel agent using SwiftUI and
+                Apple's Foundation Models.
+              </p>
+
+              <p>
+                Create an agent that understands travel
+                requests, asks follow-up questions,
+                and calls external tools to search
+                for flights.
+              </p>
+
+              <ul class="workshop-topics">
+                <li>Building conversational AI workflows</li>
+                <li>Implementing custom tools</li>
+                <li>Connecting to an Express.js flight API</li>
+                <li>Generating structured flight results</li>
+                <li>Using Profiles and model routing</li>
+                <li>Streaming and managing agent responses</li>
+              </ul>
+
+              <div class="workshop-meta">
+                <span>3 Hours</span>
+                <span>AI Agents</span>
+                <span>Source Code Included</span>
+              </div>
+
+              <div class="workshop-footer">
+                <div class="workshop-price">$79</div>
+
+                <a class="btn btn-primary"
+                   href="https://luma.com/p0zd8jpt"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                  Register Now &rarr;
+                </a>
+              </div>
+
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Requirements -->
+
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+
+        <div class="section-head">
+          <span class="eyebrow">Before You Join</span>
+          <h2>What You'll Need</h2>
+        </div>
+
+        <div class="workshop-grid">
+
+          <div class="workshop-card">
+            <div class="workshop-content">
+              <h3>Development Setup</h3>
+
+              <ul class="workshop-topics">
+                <li>Xcode 27 or later</li>
+                <li>Basic SwiftUI knowledge</li>
+                <li>Compatible Apple Intelligence device</li>
+                <li>iOS 27 or later</li>
+                <li>Apple Intelligence enabled</li>
+                <li>On-device model downloaded</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="workshop-card">
+            <div class="workshop-content">
+              <h3>What You'll Get</h3>
+
+              <ul class="workshop-topics">
+                <li>Live instructor-led coding</li>
+                <li>Complete project source code</li>
+                <li>Opportunities to ask questions</li>
+                <li>Practical AI implementation techniques</li>
+                <li>Real application examples</li>
+              </ul>
+            </div>
           </div>
 
         </div>
-
-
-        <div class="topics-grid">
-
-
-          <article class="topic-card">
-
-            <span class="topic-number">
-              01
-            </span>
-
-            <h3>
-              Structured Responses
-              with @Generable
-            </h3>
-
-            <p>
-              Learn how to generate strongly typed responses
-              using the @Generable macro so Foundation Models
-              can return predictable data instead of only
-              plain text.
-            </p>
-
-          </article>
-
-
-          <article class="topic-card">
-
-            <span class="topic-number">
-              02
-            </span>
-
-            <h3>
-              Working with Tools
-            </h3>
-
-            <p>
-              Give Foundation Models access to your
-              application's capabilities through custom tools
-              and learn how models invoke those tools inside
-              AI-powered workflows.
-            </p>
-
-          </article>
-
-
-          <article class="topic-card">
-
-            <span class="topic-number">
-              03
-            </span>
-
-            <h3>
-              Integrating Foundation Models
-              in SwiftUI
-            </h3>
-
-            <p>
-              Build an end-to-end AI experience inside a
-              SwiftUI application including prompts,
-              responses, streaming results, and responsive
-              AI interfaces.
-            </p>
-
-          </article>
-
-
-          <article class="topic-card">
-
-            <span class="topic-number">
-              04
-            </span>
-
-            <h3>
-              Building a Persistent
-              AI Experience
-            </h3>
-
-            <p>
-              Use SwiftData to store generated content so users
-              can revisit previous sessions, with practical
-              modeling and persistence techniques.
-            </p>
-
-          </article>
-
-
-        </div>
-
       </div>
-
     </section>
 
-
-    <!-- MEMBERSHIP -->
+    <!-- Membership -->
 
     <section class="section">
-
       <div class="container">
 
         <div class="member-cta">
-
           <div>
-
             <span class="eyebrow">
               AzamSharp Membership
             </span>
 
-            <h3>
-              Members attend workshops
-              at no additional cost.
-            </h3>
+            <h2>Keep Learning Beyond the Workshops</h2>
 
             <p>
-              Join AzamSharp School to get the complete course
-              library, digital books, workshops, office hours,
-              and new member content in one membership.
+              Explore the complete AzamSharp School
+              course library, digital books, office hours,
+              and member resources.
             </p>
-
           </div>
 
-
-          <a
-            class="btn btn-primary"
-            href="index.html#membership"
-          >
-            View Membership →
+          <a class="btn btn-primary"
+             href="index.html#membership">
+            Explore Membership &rarr;
           </a>
-
         </div>
 
       </div>
-
     </section>
-
 
     <!-- FAQ -->
 
-    <section
-      class="section"
-      id="faq"
-    >
-
+    <section class="section" id="faq">
       <div class="container">
 
         <div class="section-head">
-
-          <div>
-
-            <span class="eyebrow">
-              FAQ
-            </span>
-
-            <h2>
-              Frequently asked questions.
-            </h2>
-
-          </div>
-
+          <span class="eyebrow">FAQ</span>
+          <h2>Frequently Asked Questions</h2>
         </div>
-
 
         <div class="faq-list">
 
-
           <details open>
-
             <summary>
-              What prerequisites are needed
-              to enroll in the workshop?
+              Do I need AI experience?
             </summary>
-
             <p>
-              Our workshops cater to individuals with basic
-              programming knowledge. Familiarity with
-              programming concepts and Swift language basics
-              would be beneficial.
+              No AI experience is required for the first
+              workshop. Basic Swift and SwiftUI knowledge
+              is recommended.
             </p>
-
           </details>
 
-
           <details>
-
             <summary>
-              How are workshops structured?
+              Do I need an Apple Intelligence device?
             </summary>
-
             <p>
-              Every workshop combines a concise lecture,
-              live coding, and practical activities. Students
-              are encouraged to code along and reinforce their
-              understanding through hands-on exercises.
+              Yes. To follow along on a device, you'll
+              need a compatible iPhone or iPad with
+              Apple Intelligence enabled and the
+              on-device model downloaded.
             </p>
-
           </details>
 
-
           <details>
-
-            <summary>
-              Will you provide starter or final projects
-              related to the workshops?
-            </summary>
-
-            <p>
-              Yes. Depending on the workshop, you'll either
-              start with projects that help establish the
-              foundation or finish with a project that brings
-              the concepts together.
-            </p>
-
-          </details>
-
-
-          <details>
-
             <summary>
               Where are the workshops hosted?
             </summary>
-
             <p>
-              Workshops are hosted on Zoom.
+              Both workshops are delivered live through
+              Zoom. Registration is handled through Luma.
             </p>
-
           </details>
 
+          <details>
+            <summary>
+              Will source code be provided?
+            </summary>
+            <p>
+              Yes. The workshop project source code
+              is included with registration.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              Can I attend both workshops?
+            </summary>
+            <p>
+              Yes. Each workshop is a separate event.
+              You can register for either workshop
+              or attend both.
+            </p>
+          </details>
 
         </div>
-
       </div>
-
     </section>
-
 
   </main>
 
-
-  <!-- FOOTER -->
+  <!-- Footer -->
 
   <footer>
-
     <div class="container">
 
       <div class="footer-grid">
 
-
         <div>
-
-          <a
-            class="brand"
-            href="index.html"
-          >
+          <a class="brand" href="index.html">
             Azam<span>Sharp</span>
           </a>
-
           <p>
-            Practical courses, books, and workshops for
-            modern iOS and AI developers.
+            Practical courses, books, and workshops
+            for modern iOS and AI developers.
           </p>
-
         </div>
 
-
         <div>
-
-          <h4>
-            Learn
-          </h4>
-
-          <a href="index.html#courses">
-            Courses
-          </a>
-
-          <a href="books.html">
-            Books
-          </a>
-
-          <a href="workshops.html">
-            Workshops
-          </a>
-
-          <a href="index.html#membership">
-            Membership
-          </a>
-
+          <h4>Learn</h4>
+          <a href="index.html#courses">Courses</a>
+          <a href="books.html">Books</a>
+          <a href="workshops.html">Workshops</a>
+          <a href="index.html#membership">Membership</a>
         </div>
 
-
         <div>
-
-          <h4>
-            School
-          </h4>
-
-          <a href="index.html#about">
-            About Azam
-          </a>
-
-          <a
-            href="https://azamsharp.teachable.com/p/tutorials"
-          >
+          <h4>School</h4>
+          <a href="index.html#about">About Azam</a>
+          <a href="https://azamsharp.teachable.com/p/tutorials">
             Tutorials
           </a>
-
-          <a
-            href="https://azamsharp.teachable.com/p/newsletter"
-          >
+          <a href="https://azamsharp.teachable.com/p/newsletter">
             Newsletter
           </a>
-
         </div>
 
-
         <div>
-
-          <h4>
-            Connect
-          </h4>
-
+          <h4>Connect</h4>
           <a href="https://twitter.com/azamsharp">
             X / Twitter
           </a>
-
           <a href="mailto:azam@azamsharp.com">
             azam@azamsharp.com
           </a>
-
         </div>
-
 
       </div>
 
-
       <div class="copyright">
-        © 2026 AzamSharp School.
-        All rights reserved.
+        © 2026 AzamSharp School. All rights reserved.
       </div>
 
     </div>
-
   </footer>
-
 
 </body>
 </html>
